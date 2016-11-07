@@ -15,6 +15,7 @@ exports.flickrSearch = function (tag, callback) {
             , 'postman-token': '73132e7b-435d-a463-290b-0509d0ecb2f8'
         }
     }
+
     console.log('You searched for ' + tag)
     const req = http.request(options, function (res) {
         var data
@@ -22,7 +23,9 @@ exports.flickrSearch = function (tag, callback) {
             data += chunk
         })
         res.on('end', function () {
-            console.log(JSON.stringify(data))
+            ///console.log(JSON.stringify(data))
+            const fullURL = options.hostname+options.path
+            ///console.log(fullURL)
             data = data.replace('undefined', '')
             callback(null, JSON.parse(data))
         })
