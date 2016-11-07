@@ -4,9 +4,7 @@
     , "description": "304CEM Web API Development Assignment"
     , "main": "index.js"
     , "scripts": {
-        test ": "
-        node_modules / .bin / jasmine - node spec--color--verbose--autotest--watch.
-        "
+        test: "node_modules / .bin / jasmine - node spec--color--verbose--autotest--watch ."
     }
     , "repository": {
         "type": "git"
