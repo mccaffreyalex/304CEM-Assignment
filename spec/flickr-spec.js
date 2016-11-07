@@ -17,3 +17,9 @@ describe('Searching 2 photos per page', function () {
         expect(JSON.photos.perpage).toBe(2);
     });
 });
+
+///tests
+///when searching for london, the url contains tags="london"
+///when searching, 2 photos will be returned = per_page=2
+///when searching, and no photos show up - undefinded
+///
