@@ -4,8 +4,8 @@
     , "description": "304CEM Web API Development Assignment"
     , "main": "index.js"
     , "scripts": {
-        "test": "node_modules/.bin/jasmine-node spec --color --verbose --autotest --watch ."
-        , "lint": "sudo node_modules/.bin/eslint --fix --watch ."
+        "test": "sudo node_modules/.bin/eslint --fix -v"
+        , "aaaaa": "node_modules/.bin/jasmine-node spec --color --verbose --autotest --watch ."
         , "coverage": ""
         , "doc": ""
     }
