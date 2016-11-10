@@ -5,7 +5,9 @@
     , "main": "index.js"
     , "scripts": {
         "test": "node_modules/.bin/jasmine-node spec --color --verbose --autotest --watch ."
-        , "eslint": "sudo node_modules/.bin/eslint --fix --watch ."
+        , "lint": "sudo node_modules/.bin/eslint --fix --watch ."
+        , "coverage": ""
+        , "doc": ""
     }
     , "repository": {
         "type": "git"
@@ -34,5 +36,9 @@
     , "devDependencies": {
         "eslint": "^3.9.1"
         , "frisby": "^0.8.5"
+        , "istanbul": "^0.4.5"
+        , "jasmine-node": "^1.14.5"
+        , "jsdoc": "^3.4.3"
+        , "node-inspector": "^0.12.8"
     }
 }
