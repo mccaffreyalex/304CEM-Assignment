@@ -8,7 +8,8 @@ exports.flickrSearch = function (tag, callback) {
             method: 'flickr.photos.search'
             , api_key: '47b47ea9fe9d92ff9aac9cc70acb388a'
             , tags: tag
-            , per_page: '3'
+            , min_upload_date: '1477958400'
+            , per_page: '1'
             , format: 'json'
             , nojsoncallback: '1'
         }
