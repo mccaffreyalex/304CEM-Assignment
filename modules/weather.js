@@ -1,11 +1,12 @@
 'use strict'
 const http = require('http')
     , request = require('request')
-if (process.argv.length < 4) {
+if (process.argv.length < 3) {
     throw 'missing parameter'
 }
 let location = process.argv[2]
-let date = process.argv[3]
+let date = '2016-11-10'
+
 const options = {
     "method": 'GET'
     , "hostname": 'api.apixu.com'
