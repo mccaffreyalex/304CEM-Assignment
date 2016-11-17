@@ -11,7 +11,7 @@ const options = {
     "method": 'GET'
     , "hostname": 'api.apixu.com'
     , "port": null
-    , "path": '/v1/history.json?key=ceac95eb930640de828164828162610&q=' + location + '&dt=' + date
+    , "path": '/v1.json?key=ceac95eb930640de828164828162610&q=' + location + '&dt=' + date
     , "headers": {
         "cache-control": "no-cache"
         , "postman-token": "38727c34-9c2a-0c4e-82f2-6d8689f293fc"
