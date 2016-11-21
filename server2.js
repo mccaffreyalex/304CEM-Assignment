@@ -21,10 +21,9 @@ server.get('/flickr', function (req, res, next) {
         }
     })
 })
-server.get('/weather', function (req, res, next) {
-    console.log(req.params.q)
-    console.log(req.params.dt)
-    weatherRequest.weatherSearch(req.params.q, req.params.dt, function (err, result) {
+server.get('/flickr-info', function (req, res, next) {
+    console.log(req.params.i)
+    flickrInfo.flickrInfo(req.params.i, function (err, result) {
         if (err) {
             console.log(err)
         }
@@ -33,9 +32,9 @@ server.get('/weather', function (req, res, next) {
         }
     })
 })
-server.get('/flickr-info', function (req, res, next) {
-    console.log(req.params.i)
-    flickrInfo.flickrInfo(req.params.i, function (err, result) {
+server.get('/weather', function (req, res, next) {
+    console.log(req.params.q, req.params.dt)
+    weatherRequest.weatherSearch(req.params.q, req.params.dt, function (err, result) {
         if (err) {
             console.log(err)
         }
