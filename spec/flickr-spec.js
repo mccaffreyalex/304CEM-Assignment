@@ -3,7 +3,7 @@
 'use strict'
 const flickr = require('../modules/flickr-request')
 describe('The Flickr API', function () {
-        it('should limit the number to 2', function (done) {
+        xit('should limit the number to 2', function (done) {
             flickr.flickrSearch('London', function (err, searchResults) {
                 expect(err).toBe(null)
                 expect(searchResults.photos.perpage).toBe(2)
@@ -11,14 +11,14 @@ describe('The Flickr API', function () {
                 done()
             })
         })
-        it('should have status of ok', function (done) {
+        xit('should have status of ok', function (done) {
             flickr.flickrSearch('London', function (err, searchResults) {
                 expect(err).toBe(null)
                 expect(searchResults.stat).toBe('ok')
                 done()
             })
         })
-        it('should return 0 pages when no photos for the tag can be found', function (done) {
+        xit('should return 0 pages when no photos for the tag can be found', function (done) {
             flickr.flickrSearch('randomtaghere', function (err, searchResults) {
                 expect(err).toBe(null)
                 expect(searchResults.photos.pages).toBe(0)

@@ -2,7 +2,7 @@
 'use strict'
 const weather = require('../modules/weather-request')
 describe('The Apixu Weather API', function () {
-        it('should check that the request was successful', function (done) {
+        xit('should check that the request was successful', function (done) {
             weather.weatherSearch('London', '2016-11-07', function (err, searchResults) {
                 expect(err).toBe(null)
                 expect(searchResults.location.name).toBe('London')
@@ -10,7 +10,7 @@ describe('The Apixu Weather API', function () {
                 done()
             })
         })
-        it('should return an error if location missing', function (done) {
+        xit('should return an error if location missing', function (done) {
             weather.weatherSearch('', '2016-11-08', function (err, searchResults) {
                 expect(err).toBe(null)
                 expect(searchResults.error.code).toBe(1003)
@@ -18,7 +18,7 @@ describe('The Apixu Weather API', function () {
                 done()
             })
         })
-        it('should return an error if date missing', function (done) {
+        xit('should return an error if date missing', function (done) {
             weather.weatherSearch('London', '', function (err, searchResults) {
                 expect(err).toBe(null)
                 expect(searchResults.error.code).toBe(1007)
