@@ -9,7 +9,7 @@ exports.search = (request, callback) => {
         callback(null, data)
     }).catch(err => {
         callback(err)
-    })
+    }).then return flickrInfo.searchByID(query)
 }
 exports.searchID = (request, callback) => {
     extractParam(request, 'i').then(query => {
