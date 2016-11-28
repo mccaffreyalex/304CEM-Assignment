@@ -1,46 +1,45 @@
 {
-  "name": "304cem-assignment",
-  "version": "1.0.0",
-  "description": "304CEM Web API Development Assignment",
-  "main": "index.js",
-  "scripts": {
-    "eslint": "node_modules/.bin/eslint --fix -v",
-    "test": "node_modules/.bin/jasmine-node spec --color --verbose --captureExceptions --autotest --watch .",
-    "coverage": "",
-    "doc": ""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mccaffreyalex/304CEM-Assignment.git"
-  },
-  "author": "Alex McCaffrey",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mccaffreyalex/304CEM-Assignment/issues"
-  },
-  "homepage": "https://github.com/mccaffreyalex/304CEM-Assignment#readme",
-  "dependencies": {
-    "cheerio": "^0.22.0",
-    "ejs": "^2.5.2",
-    "git-flow": "^0.2.0",
-    "istanbul": "^0.4.5",
-    "jasmine": "^2.5.2",
-    "jsdoc": "^3.4.2",
-    "minimatch": "^3.0.3",
-    "mongoose": "^4.7.0",
-    "node-persist": "^2.0.7",
-    "nodemon": "^1.11.0",
-    "readline-sync": "^1.4.5",
-    "request": "^2.78.0",
-    "restify": "^4.2.0",
-    "sync-request": "^3.0.1"
-  },
-  "devDependencies": {
-    "eslint": "^3.9.1",
-    "frisby": "^0.8.5",
-    "istanbul": "^0.4.5",
-    "jasmine-node": "^1.14.5",
-    "jsdoc": "^3.4.3",
-    "node-inspector": "^0.12.8"
-  }
+    "name": "304cem-assignment"
+    , "version": "1.0.0"
+    , "description": "304CEM Web API Development Assignment"
+    , "main": "server2.js"
+    , "scripts": {
+        "eslint": "node_modules/.bin/eslint --fix -v"
+        , "test": "node_modules/.bin/jasmine-node spec --color --verbose --captureExceptions --autotest --watch ."
+        , "doc": ""
+    }
+    , "repository": {
+        "type": "git"
+        , "url": "git+https://github.com/mccaffreyalex/304CEM-Assignment.git"
+    }
+    , "author": "Alex McCaffrey"
+    , "license": "ISC"
+    , "bugs": {
+        "url": "https://github.com/mccaffreyalex/304CEM-Assignment/issues"
+    }
+    , "homepage": "https://github.com/mccaffreyalex/304CEM-Assignment#readme"
+    , "dependencies": {
+        "cheerio": "^0.22.0"
+        , "ejs": "^2.5.2"
+        , "git-flow": "^0.2.0"
+        , "istanbul": "^0.4.5"
+        , "jasmine": "^2.5.2"
+        , "jsdoc": "^3.4.2"
+        , "minimatch": "^3.0.3"
+        , "mongoose": "^4.7.0"
+        , "node-persist": "^2.0.7"
+        , "nodemon": "^1.11.0"
+        , "readline-sync": "^1.4.5"
+        , "request": "^2.78.0"
+        , "restify": "^4.2.0"
+        , "sync-request": "^3.0.1"
+    }
+    , "devDependencies": {
+        "eslint": "^3.9.1"
+        , "frisby": "^0.8.5"
+        , "istanbul": "^0.4.5"
+        , "jasmine-node": "^1.14.5"
+        , "jsdoc": "^3.4.3"
+        , "node-inspector": "^0.12.8"
+    }
 }
