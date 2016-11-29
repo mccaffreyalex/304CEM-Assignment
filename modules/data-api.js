@@ -8,7 +8,7 @@ exports.search = (request, callback) => {
     }).then(data => {
         callback(null, data)
     }).catch(err => {
-        callback(err)
+        callback(err) 
     })
 }
 ///then flickr.Info.searchByID and parse photoID from .searchByTag into the request
