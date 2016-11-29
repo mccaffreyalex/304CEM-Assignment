@@ -1,9 +1,11 @@
 'use strict'
 const restify = require('restify')
 const server = restify.createServer()
+    ///
 const flickr = require('./modules/flickr-request')
 const flickrInfo = require('./modules/flickr-info-request')
 const weatherRequest = require('./modules/weather-request')
+    ///
 const api = require('./modules/data-api')
 const status = {
         ok: 200
