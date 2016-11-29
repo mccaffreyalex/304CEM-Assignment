@@ -20,13 +20,13 @@ exports.searchByTag = query => new Promise((resolve, reject) => {
     const url = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=47b47ea9fe9d92ff9aac9cc70acb388a&tags=${query}&min_upload_date=1477958400&per_page=1&format=json&nojsoncallback=1`
     request.get(url, (err, res, body) => {
         if (err) {
-            reject(Error('API call failed'))
+            reject(Error('failed to make API call'))
         }
         console.log(url)
         const json = JSON.parse(body)
         const data = {
             numberOfPhotos: `${json.photos.perpage}`
-            , photoID: `${json.photos.photo[0].id}`
+            , photo_id: `${json.photos.photo[0].id}`
             , owner: `${json.photos.photo[0].owner}`
             , title: `${json.photos.photo[0].title}`
             , url: 'http://farm' + `${json.photos.photo[0].farm}` + '.staticflickr.com/' + `${json.photos.photo[0].server}` + '/' + `${json.photos.photo[0].id}` + '_' + `${json.photos.photo[0].secret}` + '.jpg'
