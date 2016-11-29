@@ -1,0 +1,7 @@
+Flickr API
+key - 47b47ea9fe9d92ff9aac9cc70acb388a
+Documentation - https://www.flickr.com/services/api/
+
+Apixu API
+key - 53e29fa909ad4039b60100330162510
+Interactive API Explorer - https://www.apixu.com/api-explorer.aspx

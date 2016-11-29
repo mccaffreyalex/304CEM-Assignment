@@ -21,10 +21,10 @@ exports.flickrInfo = function (photo_id, callback) {
     })
 }
 exports.searchByID = query => new Promise((resolve, reject) => {
-    const url = `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=caa0f2565dcd832a5e8e74a599edae92&photo_id=${query}&format=json&nojsoncallback=1`
+    const url = `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=47b47ea9fe9d92ff9aac9cc70acb388a&photo_id=${query}&format=json&nojsoncallback=1`
     request.get(url, (err, res, body) => {
         if (err) {
-            reject(Error('failed to make API call'))
+            reject(Error('API call failed'))
         }
         console.log(url)
         const json = JSON.parse(body)
