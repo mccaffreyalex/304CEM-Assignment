@@ -16,14 +16,21 @@ let searchByTag = function () {
                 , title: `${json.photos.photo[0].title}`
                 , url: 'http://farm' + `${json.photos.photo[0].farm}` + '.staticflickr.com/' + `${json.photos.photo[0].server}` + '/' + `${json.photos.photo[0].id}` + '_' + `${json.photos.photo[0].secret}` + '.jpg'
             }
+            const photoID = `${json.photos.photo[0].id}`
             resolve(data)
             console.log(data)
+            .then ( )
+            return flickrInfo.searchByID(photoID)
         })
     })
 }
+
+
+
 let searchByID = function (message) {
     return new Promise(function (resolve, reject) {
-        const photoID = searchByTag.data.`${json.photos.photo[0].id}`
+        const photoID = searchByTag.data.
+        `${json.photos.photo[0].id}`
         const url = `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=caa0f2565dcd832a5e8e74a599edae92&photo_id=photoID&format=json&nojsoncallback=1`
         request.get(url, (err, res, body) => {
             if (err) {
