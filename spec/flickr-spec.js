@@ -1,7 +1,7 @@
 /*global require describe it xit expect */
 /*no eslint errors*/
 'use strict'
-const flickr = require('../modules/flickr-request')
+const flickr = require('../modules/flickr')
 describe('The Flickr API', function () {
         xit('should limit the number to 2', function (done) {
             flickr.flickrSearch('London', function (err, searchResults) {
