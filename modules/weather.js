@@ -10,7 +10,7 @@ exports.searchWeather = (location, date, callback) => {
             location: `${json.location.name}`
             , country: `${json.location.country}`
             , date: `${json.forecast.forecastday[0].date}`
-            , weather: `${json.forecast.forecastday[0].day.condition.text}`
+            , weatherCondition: `${json.forecast.forecastday[0].day.condition.text}`
             , weatherURL: `${json.forecast.forecastday[0].day.condition.icon}`
             , sunRise: `${json.forecast.forecastday[0].astro.sunrise}`
             , sunSet: `${json.forecast.forecastday[0].astro.sunset}`
