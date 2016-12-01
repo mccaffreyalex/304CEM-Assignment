@@ -16,10 +16,3 @@ exports.combinedData = (searchResults, data, weather) => new Promise((resolve, r
         , weather: weather
     })
 })
-exports.showUsers = function () {
-    console.log('fetching users')
-    schema.User.find({}, function (err, user) {
-        if (err) return ('error')
-        console.log(user)
-    })
-}

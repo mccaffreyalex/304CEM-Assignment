@@ -1,5 +1,4 @@
 'use strict'
-const auth = require('./auth')
 const db = require('./persistence')
 const api = require('./data-api')
 exports.searchByTag = (request, callback) => {
@@ -35,4 +34,12 @@ exports.addUser = (request, callback) => {
         callback(err)
     })
 }
-exports.addFavourite
+exports.showUsers = (request, callback) => {
+    api.extractParam(request, '').then(() => {
+        return api.showUsers(request).then
+    }).then(data => {
+        callback(null, data)
+    }).catch(err => {
+        callback(err)
+    })
+}
