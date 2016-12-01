@@ -2,6 +2,8 @@
 const restify = require('restify')
 const server = restify.createServer()
 const model = require('./modules/model')
+const db = require('./modules/persistence')
+const api = require('./modules/data-api')
 const status = {
         ok: 200
         , added: 201
@@ -14,13 +16,48 @@ server.use(restify.bodyParser())
 server.use(restify.acceptParser(server.acceptable))
 server.use(restify.authorizationParser())
     ////
+server.get('/users', (req, res) => {
+    api.showUsers(req, (err, data) => {
+        res.setHeader('accepts', 'GET')
+        err ? res.send(err) : res.send(data)
+        res.end()
+    })
+})
+server.post('/accounts', (req, res) => {
+    model.addUser(req, (err, data) => {
+        res.setHeader('content-type', 'application/json')
+        res.setHeader('accepts', 'GET, POST')
+        err ? res.send(status.badRequest, {
+            error: err.message
+        }) : res.send(status.added, {
+            user: data
+        })
+        res.end()
+    })
+})
 server.get('/', (req, res, next) => {
     res.redirect('/api', next)
 })
-server.get('/api', (req, res) => { << << << < HEAD
-        model.searchByTag(req, (err, data) => {
+server.get('/api', (req, res) => {
+    model.searchByTag(req, (err, data) => {
+        res.setHeader('content-type', 'application/json')
+        res.setHeader('accepts', 'GET')
+        err ? res.send(status.badRequest, err) : res.send(status.ok, data)
+        res.end()
+    })
+})
+server.post('/favourites', (req, res) => {
+    model.addToCart(req, (err, data) => {
+        res.setHeader('content-type', 'application/json')
+        res.setHeader('accepts', 'GET, POST')
+        err ? res.send(status.badRequest, err) : res.send(status.ok, data)
+        res.end()
+    })
+})
+server.get('/favourites', (req, res) => {
+        model.showCart(req, (err, data) => {
             res.setHeader('content-type', 'application/json')
-            res.setHeader('accepts', 'GET')
+            res.setHeader('accepts', 'GET, POST')
             err ? res.send(status.badRequest, err) : res.send(status.ok, data)
             res.end()
         })
