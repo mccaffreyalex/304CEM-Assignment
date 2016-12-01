@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mccaffreyalex/304CEM-Assignment#readme",
   "dependencies": {
+    "bcryptjs": "^2.3.0",
     "cheerio": "^0.22.0",
     "ejs": "^2.5.2",
     "git-flow": "^0.2.0",
