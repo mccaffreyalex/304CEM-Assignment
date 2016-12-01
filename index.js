@@ -26,30 +26,4 @@ server.get('/api', (req, res) => {
     ///server.post('/users/confirm/:username', users.validateCode, users.confirm) // confirm a pending user
     ///server.del('/users/:username', authorization.authorize, users.delete) // delete a user
 const port = process.env.PORT || 8085
-server.listen(port, err => console.log(err || `Server running at: ${port}`))
-    /*
-    server.get('/flickr', flickr.flickrSearch)
-    server.get('/flickr-info', function (req, res, next) {
-        console.log(req.params.i)
-        flickrInfo.flickrInfo(req.params.i, function (err, result) {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                res.send(result)
-            }
-        })
-    })
-    server.get('/flickr-info', flickrInfo.flickrInfo)
-    server.get('/weather', function (req, res, next) {
-            console.log(req.params.q, req.params.dt)
-            weatherRequest.weatherSearch(req.params.q, req.params.dt, function (err, result) {
-                if (err) {
-                    console.log(err)
-                }
-                else {
-                    res.send(result)
-                }
-            })
-        })
-        */
+server.listen(port, err => console.log(err || `Server running at: http://localhost:${port}`))
