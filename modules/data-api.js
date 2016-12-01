@@ -6,7 +6,6 @@ exports.extractParam = (request, param) => new Promise((resolve, reject) => {
     resolve(request.params[param])
 })
 exports.searchByTag = tag => new Promise((resolve, reject) => flickr.searchByTag(tag, (err, result) => err ? reject(err) : resolve(result)))
-    //search weather
 exports.searchByID = id => new Promise((resolve, reject) => flickr.searchByID(id, (err, result) => err ? reject(err) : resolve(result)))
 exports.searchWeather = (location, date) => new Promise((resolve, reject) => weather.searchWeather(location, date, (err, result) => err ? reject(err) : resolve(result)))
 exports.combinedData = (searchResults, data, weather) => new Promise((resolve, reject) => {
