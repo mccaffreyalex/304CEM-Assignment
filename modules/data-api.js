@@ -1,27 +1,25 @@
 'use strict'
-const flickr = require('./flickr-request')
-const flickrInfo = require('./flickr-info-request')
-const weather = require('./weather-request')
-exports.search = (request, callback) => {
-    extractParam(request, 't').then(query => {
-        return flickr.searchByTag(query)
-    }).then(data => {
-        callback(null, data)
-    }).catch(err => {
-        callback(err)
-    })
-}
-///then flickr.Info.searchByID and parse photoID from .searchByTag into the request
-exports.searchID = (request, callback) => {
-    extractParam(request, 'i').then(query => {
-        return flickrInfo.searchByID(query)
-    }).then(data => {
-        callback(null, data)
-    }).catch(err => {
-        callback(err)
-    })
-}
-const extractParam = (request, param) => new Promise((resolve, reject) => {
+const flickr = require('./flickr')
+const weather = require('./weather')
+const schema = require('../schema/schema')
+exports.extractParam = (request, param) => new Promise((resolve, reject) => {
     if (request.params === undefined || request.params[param] === undefined) reject(new Error(`${param} parameter missing`))
     resolve(request.params[param])
 })
+exports.searchByTag = tag => new Promise((resolve, reject) => flickr.searchByTag(tag, (err, result) => err ? reject(err) : resolve(result)))
+exports.searchByID = id => new Promise((resolve, reject) => flickr.searchByID(id, (err, result) => err ? reject(err) : resolve(result)))
+exports.searchWeather = (location, date) => new Promise((resolve, reject) => weather.searchWeather(location, date, (err, result) => err ? reject(err) : resolve(result)))
+exports.combinedData = (searchResults, data, weather) => new Promise((resolve, reject) => {
+    resolve({
+        results: searchResults
+        , data: data
+        , weather: weather
+    })
+})
+exports.showUsers = function () {
+    console.log('fetching users')
+    schema.User.find({}, function (err, user) {
+        if (err) return ('error')
+        console.log(user)
+    })
+}
