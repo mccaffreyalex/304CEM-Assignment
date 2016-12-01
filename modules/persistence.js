@@ -34,3 +34,17 @@ exports.checkCredentials = credentials => new Promise((resolve, reject) => {
         reject(new Error('invalid username'))
     })
 })
+exports.showUsers = function (err, callback) {
+    console.log('Listing users...')
+    schema.User.find({}, function (err, users) {
+        if (err) return ('error could not find ')
+        return callback(null, users)
+    })
+}
+exports.showFavourites = function (err, callback) {
+    console.log('Listing favourites...')
+    schema.Photo.find({}, function (err, photos) {
+        if (err) return ('error could not find ')
+        return callback(null, photos)
+    })
+}
