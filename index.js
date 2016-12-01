@@ -5,25 +5,33 @@ const model = require('./modules/model')
 const db = require('./modules/persistence')
 const api = require('./modules/data-api')
 const status = {
-        ok: 200
-        , added: 201
-        , badRequest: 400
-    }
-    ////
+    ok: 200
+    , added: 201
+    , badRequest: 400
+}
 server.use(restify.queryParser())
 server.use(restify.fullResponse())
 server.use(restify.bodyParser())
 server.use(restify.acceptParser(server.acceptable))
 server.use(restify.authorizationParser())
-    ////
+server.get('/', (req, res, next) => {
+    res.redirect('/api', next)
+})
 server.get('/users', (req, res) => {
-    api.showUsers(req, (err, data) => {
+    db.showUsers(req, (err, data) => {
         res.setHeader('accepts', 'GET')
         err ? res.send(err) : res.send(data)
         res.end()
     })
 })
-server.post('/accounts', (req, res) => {
+server.get('/favourites', (req, res) => {
+    db.showFavourites(req, (err, data) => {
+        res.setHeader('accepts', 'GET')
+        err ? res.send(err) : res.send(data)
+        res.end()
+    })
+})
+server.post('/users', (req, res) => {
     model.addUser(req, (err, data) => {
         res.setHeader('content-type', 'application/json')
         res.setHeader('accepts', 'GET, POST')
@@ -35,8 +43,17 @@ server.post('/accounts', (req, res) => {
         res.end()
     })
 })
-server.get('/', (req, res, next) => {
-    res.redirect('/api', next)
+server.post('/favourites', (req, res) => {
+    model.addFavourite(req, (err, data) => {
+        res.setHeader('content-type', 'application/json')
+        res.setHeader('accepts', 'GET, POST')
+        err ? res.send(status.badRequest, {
+            error: err.message
+        }) : res.send(status.added, {
+            user: data
+        })
+        res.end()
+    })
 })
 server.get('/api', (req, res) => {
     model.searchByTag(req, (err, data) => {
