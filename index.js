@@ -3,18 +3,21 @@ const restify = require('restify')
 const server = restify.createServer()
 const model = require('./modules/model')
 const status = {
-    ok: 200
-    , added: 201
-    , badRequest: 400
-}
+        ok: 200
+        , added: 201
+        , badRequest: 400
+    }
+    ////
 server.use(restify.queryParser())
+server.use(restify.fullResponse())
 server.use(restify.bodyParser())
 server.use(restify.acceptParser(server.acceptable))
 server.use(restify.authorizationParser())
+    ////
 server.get('/', (req, res, next) => {
     res.redirect('/api', next)
 })
-server.get('/api', (req, res) => {
+server.get('/api', (req, res) => { << << << < HEAD
         model.searchByTag(req, (err, data) => {
             res.setHeader('content-type', 'application/json')
             res.setHeader('accepts', 'GET')
