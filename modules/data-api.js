@@ -1,6 +1,7 @@
 'use strict'
 const flickr = require('./flickr')
 const weather = require('./weather')
+const schema = require('../schema/schema')
 exports.extractParam = (request, param) => new Promise((resolve, reject) => {
     if (request.params === undefined || request.params[param] === undefined) reject(new Error(`${param} parameter missing`))
     resolve(request.params[param])
