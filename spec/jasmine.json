@@ -1,0 +1,8 @@
+{
+    "spec_files": [
+		"flickr-spec.js"
+	]
+    , "helpers": [
+		"helpers/**/*.js"
+	]
+}
