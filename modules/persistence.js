@@ -10,10 +10,11 @@ exports.savePhoto = photoDetails => new Promise((resolve, reject) => {
 })
 exports.addUser = details => new Promise((resolve, reject) => {
     if (!'username' in details && !'password' in details) reject(new Error('invalid user object'))
-    const user = new schema.User(details)
+    const user = new schema.userModel(user)
+    user.username = details.username
+    user.password = details.password
     user.save((err, user) => {
         if (err) reject(new Error('error creating account'))
-        delete details.password
         resolve()
     })
 })
@@ -35,16 +36,14 @@ exports.checkCredentials = credentials => new Promise((resolve, reject) => {
     })
 })
 exports.showUsers = function (err, callback) {
-    console.log('Listing users...')
     schema.User.find({}, function (err, users) {
-        if (err) return ('error could not find ')
+        if (err) return ('error could not find any users')
         return callback(null, users)
     })
 }
 exports.showFavourites = function (err, callback) {
-    console.log('Listing favourites...')
-    schema.Photo.find({}, function (err, photos) {
-        if (err) return ('error could not find ')
-        return callback(null, photos)
+    schema.Photo.find({}, function (err, favourites) {
+        if (err) return ('error could not find photos')
+        return callback(null, favourites)
     })
 }
