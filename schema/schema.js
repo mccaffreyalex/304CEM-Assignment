@@ -1,5 +1,4 @@
 'use strict'
-//import mongoose
 const mongoose = require('mongoose')
 const credentials = {
     user: 'alex'
@@ -8,14 +7,15 @@ const credentials = {
 mongoose.connect(`mongodb://${credentials.user}:${credentials.pass}@ds113958.mlab.com:13958/304db`)
 mongoose.Promise = global.Promise
 const Schema = mongoose.Schema
-const userScheme = new Schema({
+    , ObjectId = Schema.ObjectId
+const UserSchema = new Schema({
     username: String
     , password: String
 })
-exports.User = mongoose.model('User', userScheme)
+exports.userModel = mongoose.model('users', UserSchema)
 const photoSchema = new Schema({
     title: String
     , author: String
     , photoID: String
 })
-exports.Photo = mongoose.model('Photo', photoSchema)
+exports.photoModel = mongoose.model('Photo', photoSchema)
