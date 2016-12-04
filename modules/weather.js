@@ -2,10 +2,8 @@
 const request = require('request')
 exports.searchWeather = (location, date, callback) => {
     const url = `http://api.apixu.com/v1/history.json?key=ceac95eb930640de828164828162610&q=${location}&dt=${date}`
-    console.log(url)
     request.get(url, (err, res, body) => {
         const json = JSON.parse(body)
-        console.log(json)
         if (json.hasOwnProperty('error')) callback({
             code: 1003
             , message: 'location missing'
