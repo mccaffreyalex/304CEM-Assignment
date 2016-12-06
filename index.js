@@ -91,7 +91,7 @@ server.get('/api', (req, res) => {
         res.end()
     })
 })
-const port = 8085
+const port = process.env.PORT || 80
 server.listen(port, err => console.log(err || `Server running at: http://localhost:${port}`))
     // udemy
 function respond(res, next, status, data, http_code) {
