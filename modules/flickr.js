@@ -6,6 +6,7 @@ exports.searchByTag = (tag, callback) => {
         if (err) callback(Error('failed to make API call'))
             ///console.log(url)
         const json = JSON.parse(body)
+        console.log(url)
         if (json.photos.total === '0') callback({
             message: 'No photos found with tag'
         })

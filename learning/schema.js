@@ -11,4 +11,4 @@ const UserSchema = new Schema({
     username: String
     , password: String
 })
-exports.userModel = mongoose.model('users', UserSchema)
+exports.userModel = mongoose.model('users-backup', UserSchema)

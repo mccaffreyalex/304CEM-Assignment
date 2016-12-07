@@ -30,11 +30,12 @@ var max_user_id = 0
 server.get('/', function (req, res, next) {
     success(res, next, users)
 })
-server.get('/user/:id', function (req, res, next) {
-    if (typeof (users[req.params.id]) === 'undefined') {
+server.get('/user/:username', function (req, res, next) {
+    console.log(req.params.username)
+    if (typeof (users[req.params.username]) === 'undefined') {
         failure(res, next, 'The specified user could not be found in the database', 404)
     }
-    success(res, next, users[parseInt(req.params.id)])
+    success(res, next, users[parseInt(req.params.username)])
 })
 server.post('/users', function (req, res, next) {
     const user = new db.userModel()
