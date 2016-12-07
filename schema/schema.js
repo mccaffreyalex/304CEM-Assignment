@@ -14,6 +14,7 @@ const UserSchema = new Schema({
 })
 exports.userModel = mongoose.model('users', UserSchema)
 const photoSchema = new Schema({
-    photoID: String
+    photoID: String,
+    location: String
 })
 exports.photoModel = mongoose.model('Photo', photoSchema)
