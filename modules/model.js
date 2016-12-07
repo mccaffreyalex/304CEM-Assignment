@@ -1,6 +1,7 @@
 'use strict'
-const db = require('./persistence')
 const api = require('./data-api')
+const model = require('./model')
+const persistence = require('./persistence')
 exports.searchByTag = (request, callback) => {
     api.extractParam(request, 't').then(tag => {
         return api.searchByTag(tag)
@@ -18,28 +19,37 @@ exports.searchByTag = (request, callback) => {
         callback(err)
     })
 }
-exports.addUser = (request, callback) => {
-    let data
-    console.log(1)
-    db.checkCredentials(request).then(account => {
-        console.log(2)
-        this.account = account
-    }).then(account => {
-        console.log(3)
-        db.userExists(account)
-    }).then(account => {
-        console.log(4)
-        callback(null, account)
-    }).catch(err => {
-        callback(err)
+exports.addUser = persistence.addUser
+exports.showUsers = (req, res) => { //lists all users
+    persistence.showUsers(req, (err, data) => {
+        res.setHeader('content-type', 'application/json')
+        res.setHeader('accepts', 'GET')
+        err ? res.send(err) : res.send(data)
+        res.end()
     })
 }
-exports.showUsers = (request, callback) => {
-    api.extractParam(request, '').then(() => {
-        return api.showUsers(request).then
-    }).then(data => {
-        callback(null, data)
-    }).catch(err => {
-        callback(err)
+exports.addToFavourites = persistence.addToFavourites
+exports.showFavourites = (req, res) => { //lists all users
+    persistence.showFavourites(req, (err, data) => {
+        res.setHeader('content-type', 'application/json')
+        res.setHeader('accepts', 'GET')
+        err ? res.send(err) : res.send(data)
+        res.end()
+    })
+}
+exports.deleteFavourite = (req, res) => {
+    persistence.deleteFavourite(req.params.photoID, (err, data) => {
+        res.setHeader('content-type', 'application/json')
+        res.setHeader('accepts', 'DELETE')
+        err ? res.send(err) : res.send(data)
+        res.end()
+    })
+}
+exports.search = (req, res) => {
+    model.searchByTag(req, (err, data) => {
+        res.setHeader('content-type', 'application/json')
+        res.setHeader('accepts', 'GET')
+        err ? res.send(model.status.badRequest, err) : res.send(model.status.ok, data)
+        res.end()
     })
 }
