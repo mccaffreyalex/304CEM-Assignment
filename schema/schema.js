@@ -14,8 +14,6 @@ const UserSchema = new Schema({
 })
 exports.userModel = mongoose.model('users', UserSchema)
 const photoSchema = new Schema({
-    title: String
-    , author: String
-    , photoID: String
+    photoID: String
 })
 exports.photoModel = mongoose.model('Photo', photoSchema)
