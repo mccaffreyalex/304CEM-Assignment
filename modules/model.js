@@ -49,7 +49,14 @@ exports.search = (req, res) => {
     model.searchByTag(req, (err, data) => {
         res.setHeader('content-type', 'application/json')
         res.setHeader('accepts', 'GET')
-        err ? res.send(model.status.badRequest, err) : res.send(model.status.ok, data)
+        err ? res.send(400, err) : res.send(200, data)
         res.end()
+    })
+}
+exports.update = (req, res) => {
+    persistence.update(req.params.photoID, req.params.photoID, (err, data) => {
+        res.setHeader('content-type', 'application/json')
+        res.setHeader('accepts', 'PUT')
+        err ? res.send(400, err) : res.send(data)
     })
 }

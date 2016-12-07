@@ -32,6 +32,7 @@ exports.showUsers = function (err, callback) {
 exports.addToFavourites = function (req, res, next) {
     const photo = new schema.photoModel()
     photo.photoID = req.params.photoID
+    photo.location = req.params.location
     photo.save(function (err) {
         if (err) index.failure(res, next, 'Photo not saved', 500)
         index.success(res, next, photo)
@@ -50,5 +51,16 @@ exports.deleteFavourite = function (photoID, callback) {
     }, function (err, photo) {
         if (err) throw err
         return callback(null, photo)
+    })
+}
+exports.update = function (photoID, location, callback) {
+    console.log('Changing location of photo:' + photoID)
+    schema.photoModel.findOneAndUpdate({
+        photoID: photoID
+    }, {
+        'location': location
+    }, function (err, photos) {
+        if (err) throw err
+        return callback(null, photos)
     })
 }
