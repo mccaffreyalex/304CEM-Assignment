@@ -5,6 +5,7 @@ const testUser = 'josh'
 const testPass = 'pass'
 const testPhotoID = '2016'
 const testLocation = 'Barcelona'
+const updatedLocation = 'Coventry'
 
 frisby.create('Adding a user')
     .post(hostURLUser, {"username":testUser, "password":testPass})
@@ -26,22 +27,18 @@ frisby.create('Listing users')
     .expectJSON([{"username":testUser, "password":testPass}])
 .toss()
 
-frisby.create('Removing the user')
+frisby.create('Deleting a user')
         .delete(hostURLUser, {"username":testUser, "password":testPass})
         .expectStatus(200)
         .expectHeaderContains('content-type', 'application/json')
         .expectHeaderContains('accepts', 'DELETE')
-        .after(function(err, res, body){
-            frisby.create('confirming user has been deleted')
-                .get(hostURLUser)
-                .expectStatus(200)
-                .expectJSON([])
-        .toss()
-})
+        .expectJSON({"ok":1, "n":1})
 .toss()
 
+//========================================================================
+
 frisby.create('Adding favourite')
-        .post(hostURLFav, {"photoID":testPhotoID, "location": testLocation}) 
+        .post(hostURLFav, {"photoID":testPhotoID, "location": testLocation})
         .expectStatus(201)
         .expectHeaderContains('content-type', 'application/json')
         .expectJSON({
@@ -60,7 +57,15 @@ frisby.create('Listing favourites')
         .expectJSON([{"location":testLocation, "photoID":testPhotoID}])
 .toss()
 
+frisby.create('Updating a favourite location from Barcelona to Coventry')
+        .put(hostURLFav + '/' + testPhotoID, {"photoID":testPhotoID, "location": updatedLocation})
+        .expectStatus(200)
+        //.expectJSON({"location":testLocation, "photoID":testPhotoID})
+.toss()
 
-//delete fav
-//update fav
-
+frisby.create('Deleting a favourite')
+        .delete(hostURLFav + '/' + testPhotoID)
+        .expectStatus(200)
+        .expectHeaderContains('content-type', 'application/json')
+        .expectJSON({"ok":1, "n":1})
+.toss()
