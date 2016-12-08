@@ -4,29 +4,37 @@
     , "description": "304CEM Web API Development Assignment"
     , "main": "index.js"
     , "scripts": {
-        "eslint": "node_modules/.bin/eslint --fix"
-        , "test": "node_modules/.bin/jasmine-node spec --color --verbose --captureExceptions --autotest --watch ."
-        , "coverage": "istanbul cover index.js **/spec** **/sceham** jasmine -node flickr"
+        "start": "node index.js"
+        , "eslint": "eslint modules/* schema/* index.js --ext .js --fix"
+        , "test": "jasmine-node spec/ --color --verbose "
+        , "coverage": "istanbul cover index.js **/spec** **/schema** jasmine-node flickr"
     }
-}, "author": "Alex McCaffrey", "license": "ISC", "homepage": "https://github.com/mccaffreyalex/304CEM-Assignment#readme", "dependencies": {
-    "bcryptjs": "^2.3.0"
-    , "git-flow": "^0.2.0"
-    , "istanbul": "^0.4.5"
-    , "jasmine": "^2.5.2"
-    , "jsdoc": "^3.4.2"
-    , "mongoose": "^4.7.0"
-    , "nodemon": "^1.11.0"
-    , "request": "^2.78.0"
-    , "restify": "^4.2.0"
-}, "devDependencies": {
-    "eslint": "^3.9.1"
-    , "frisby": "^0.8.5"
-    , "istanbul": "^0.4.5"
-    , "jasmine-node": "^1.14.5"
-    , "jsdoc": "^3.4.3"
-    , "node-inspector": "^0.12.8"
+    , "author": "Alex McCaffrey"
+    , "license": "ISC"
+    , "homepage": "https://github.com/mccaffreyalex/304CEM-Assignment#readme"
+    , "dependencies": {
+        "bcryptjs": "^2.3.0"
+        , "git-flow": "^0.2.0"
+        , "istanbul": "^0.4.5"
+        , "jasmine": "^2.5.2"
+        , "jsdoc": "^3.4.2"
+        , "mongoose": "^4.7.0"
+        , "nodemon": "^1.11.0"
+        , "request": "^2.78.0"
+        , "restify": "^4.2.0"
+    }
+    , "devDependencies": {
+        "eslint": "^3.9.1"
+        , "frisby": "^0.8.5"
+        , "istanbul": "^0.4.5"
+        , "jasmine-node": "^1.14.5"
+        , "jsdoc": "^3.4.3"
+        , "node-inspector": "^0.12.8"
+    }
+    , "notes": {
+        "//": "npm run eslint"
+        , "//": "run jsdoc with jsdoc modules/* schema/* spec/* index.js"
+        , "//": "run frisbee with npm run test"
+        , "//": "run coverage with ....."
+    }
 }
-}
-//run eslint with eslint modules/* schema/* index.js --ext .js --fix
-//run jsdoc with jsdoc modules/* schema/* spec/* index.js
-//npm run coverage
