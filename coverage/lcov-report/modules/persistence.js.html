@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for modules/persistence.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">modules/</a> persistence.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.26% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>2/47</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>2/40</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
+const schema = require('../schema/schema')
+const index = require('../index')
+<span class="cstat-no" title="statement not covered" >const status = {</span>
+	internalServerError: 500
+}
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >exports.addUser = <span class="fstat-no" title="function not covered" >function(req, res, next) {</span></span>
+<span class="cstat-no" title="statement not covered" >	const user = new schema.userModel()</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	user.username = req.params.username</span>
+<span class="cstat-no" title="statement not covered" >	user.password = req.params.password</span>
+<span class="cstat-no" title="statement not covered" >	user.save(<span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >		if (err) <span class="cstat-no" title="statement not covered" >index.failure(res, next, 'User not saved', status.internalServerError)</span></span>
+<span class="cstat-no" title="statement not covered" >		index.success(res, next, user)</span>
+	})
+}
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >exports.showUsers = <span class="fstat-no" title="function not covered" >function(users, callback) {</span></span>
+<span class="cstat-no" title="statement not covered" >	schema.userModel.find({}, <span class="fstat-no" title="function not covered" >function(err, users) {</span></span>
+<span class="cstat-no" title="statement not covered" >		if (err) <span class="cstat-no" title="statement not covered" >throw err</span></span>
+<span class="cstat-no" title="statement not covered" >		return callback(null, users)</span>
+	})
+}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >exports.deleteUser = <span class="fstat-no" title="function not covered" >function(username, callback) {</span></span>
+<span class="cstat-no" title="statement not covered" >	console.log('removing photo')</span>
+<span class="cstat-no" title="statement not covered" >	schema.userModel.remove({</span>
+		username: username
+	}, <span class="fstat-no" title="function not covered" >function(err, user) {</span>
+<span class="cstat-no" title="statement not covered" >		if (err) <span class="cstat-no" title="statement not covered" >throw err</span></span>
+<span class="cstat-no" title="statement not covered" >		return callback(null, user)</span>
+	})
+}
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >exports.addToFavourites = <span class="fstat-no" title="function not covered" >function(req, res, next) {</span></span>
+<span class="cstat-no" title="statement not covered" >	const photo = new schema.photoModel()</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	photo.photoID = req.params.photoID</span>
+<span class="cstat-no" title="statement not covered" >	photo.location = req.params.location</span>
+<span class="cstat-no" title="statement not covered" >	photo.save(<span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >		if (err) <span class="cstat-no" title="statement not covered" >index.failure(res, next, 'Photo not saved', status.internalServerError)</span></span>
+<span class="cstat-no" title="statement not covered" >		index.success(res, next, photo)</span>
+	})
+}
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >exports.showFavourites = <span class="fstat-no" title="function not covered" >function(favourites, callback) {</span></span>
+<span class="cstat-no" title="statement not covered" >	schema.photoModel.find({}, <span class="fstat-no" title="function not covered" >function(err, favourites) {</span></span>
+<span class="cstat-no" title="statement not covered" >		if (err) <span class="cstat-no" title="statement not covered" >return 'error could not find photos'</span></span>
+<span class="cstat-no" title="statement not covered" >		return callback(null, favourites)</span>
+	})
+}
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >exports.deleteFavourite = <span class="fstat-no" title="function not covered" >function(photoID, callback) {</span></span>
+<span class="cstat-no" title="statement not covered" >	console.log('removing photo')</span>
+<span class="cstat-no" title="statement not covered" >	schema.photoModel.remove({</span>
+		photoID: photoID
+	}, <span class="fstat-no" title="function not covered" >function(err, photo) {</span>
+<span class="cstat-no" title="statement not covered" >		if (err) <span class="cstat-no" title="statement not covered" >throw err</span></span>
+<span class="cstat-no" title="statement not covered" >		return callback(null, photo)</span>
+	})
+}
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >exports.update = <span class="fstat-no" title="function not covered" >function(photoID, location, callback) {</span></span>
+<span class="cstat-no" title="statement not covered" >	console.log('Changing location of photo:' + photoID)</span>
+<span class="cstat-no" title="statement not covered" >	schema.photoModel.findOneAndUpdate({</span>
+		photoID: photoID
+	}, {
+		'location': location
+	}, <span class="fstat-no" title="function not covered" >function(err, photos) {</span>
+<span class="cstat-no" title="statement not covered" >		if (err) <span class="cstat-no" title="statement not covered" >throw err</span></span>
+<span class="cstat-no" title="statement not covered" >		return callback(null, photos)</span>
+	})
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Dec 08 2016 01:56:17 GMT+0000 (GMT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
