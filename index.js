@@ -26,7 +26,7 @@ function respond(res, next, status, data, http_code) {
 	return next()
 }
 exports.success = function success(res, next, data) {
-	respond(res, next, 'success', data, index.status.ok)
+	respond(res, next, 'success', data, 201)
 }
 exports.failure = function failure(res, next, data, http_code) {
 	respond(res, next, 'failure', data, http_code)
