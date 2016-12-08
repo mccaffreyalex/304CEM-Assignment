@@ -1,86 +1,50 @@
 'use strict'
+//---------------------------------------------------------------------
 const restify = require('restify')
+const index = require('./index')
 const server = restify.createServer()
 const model = require('./modules/model')
-const db = require('./modules/persistence')
-const api = require('./modules/data-api')
-const status = {
-    ok: 200
+const defaultPort = 8080
+const port = process.env.PORT || defaultPort
+//---------------------------------------------------------------------
+
+exports.status = {
+	ok: 200
     , added: 201
     , badRequest: 400
 }
+
+function respond(res, next, status, data, http_code) {
+	const response = {
+		'status': status
+        , 'data': data
+	}
+
+	res.setHeader('content-type', 'application/json')
+	res.writeHead(http_code)
+	res.end(JSON.stringify(response))
+	return next()
+}
+exports.success = function success(res, next, data) {
+	respond(res, next, 'success', data, index.status.ok)
+}
+exports.failure = function failure(res, next, data, http_code) {
+	respond(res, next, 'failure', data, http_code)
+}
+//---------------------------------------------------------------------
 server.use(restify.queryParser())
-server.use(restify.fullResponse())
 server.use(restify.bodyParser())
 server.use(restify.acceptParser(server.acceptable))
 server.use(restify.authorizationParser())
-server.get('/', (req, res, next) => {
-    res.redirect('/api', next)
-})
-server.get('/users', (req, res) => {
-    db.showUsers(req, (err, data) => {
-        res.setHeader('accepts', 'GET')
-        err ? res.send(err) : res.send(data)
-        res.end()
-    })
-})
-server.get('/favourites', (req, res) => {
-    db.showFavourites(req, (err, data) => {
-        res.setHeader('accepts', 'GET')
-        err ? res.send(err) : res.send(data)
-        res.end()
-    })
-})
-server.post('/users', (req, res) => {
-    model.addUser(req, (err, data) => {
-        res.setHeader('content-type', 'application/json')
-        res.setHeader('accepts', 'GET, POST')
-        err ? res.send(status.badRequest, {
-            error: err.message
-        }) : res.send(status.added, {
-            user: data
-        })
-        res.end()
-    })
-})
-server.post('/favourites', (req, res) => {
-    model.addFavourite(req, (err, data) => {
-        res.setHeader('content-type', 'application/json')
-        res.setHeader('accepts', 'GET, POST')
-        err ? res.send(status.badRequest, {
-            error: err.message
-        }) : res.send(status.added, {
-            user: data
-        })
-        res.end()
-    })
-})
-server.get('/api', (req, res) => {
-    model.searchByTag(req, (err, data) => {
-        res.setHeader('content-type', 'application/json')
-        res.setHeader('accepts', 'GET')
-        err ? res.send(status.badRequest, err) : res.send(status.ok, data)
-        res.end()
-    })
-})
-server.post('/favourites', (req, res) => {
-    model.addToCart(req, (err, data) => {
-        res.setHeader('content-type', 'application/json')
-        res.setHeader('accepts', 'GET, POST')
-        err ? res.send(status.badRequest, err) : res.send(status.ok, data)
-        res.end()
-    })
-})
-server.get('/favourites', (req, res) => {
-        model.showCart(req, (err, data) => {
-            res.setHeader('content-type', 'application/json')
-            res.setHeader('accepts', 'GET, POST')
-            err ? res.send(status.badRequest, err) : res.send(status.ok, data)
-            res.end()
-        })
-    })
-    ///server.post('/users', users.validateUser, users.add) // add a new user to the DB (pending confirmation)
-    ///server.post('/users/confirm/:username', users.validateCode, users.confirm) // confirm a pending user
-    ///server.del('/users/:username', authorization.authorize, users.delete) // delete a user
-const port = process.env.PORT || 8085
+//---------------------------------------------------------------------
+server.get('/api', model.search) // does search on city - yes ?q=london
+server.get('/users', model.showUsers) // shows users - yes
+server.post('/users', model.addUser) //add new user - yes
+server.del('/users', model.deleteUser) // delete user
+server.get('/fav', model.showFavourites) //listing all favourites - yes
+server.post('/fav', model.addToFavourites) //creating new favourite - yes, put {"id": in body}
+server.del('/fav/:photoID', model.deleteFavourite) //delete fav by id 8080:/fav/alex
+//server.put('/fav') - need to add this later
+server.put('/fav/.*', model.update) //update photoID with location
+    //---------------------------------------------------------------------
 server.listen(port, err => console.log(err || `Server running at: http://localhost:${port}`))
