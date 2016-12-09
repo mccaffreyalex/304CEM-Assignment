@@ -7,7 +7,7 @@
         "start": "node index.js"
         , "eslint": "eslint modules/* schema/* index.js --ext .js --fix"
         , "test": "jasmine-node spec/ --color --verbose "
-        , "coverage": "node_modules/.bin/istanbul cover -x server.js -x /spec -x **/schema/**  jasmine-node spec"
+        , "coverage": "istanbul cover -x server.js -x /spec -x **/schema/**  jasmine-node spec"
     }
     , "author": "Alex McCaffrey"
     , "license": "ISC"
@@ -15,6 +15,7 @@
     , "dependencies": {
         "git-flow": "^0.2.0"
         , "istanbul": "^0.4.5"
+        , "frisby": "^0.8.5"
         , "jasmine": "^2.5.2"
         , "jsdoc": "^3.4.2"
         , "mongoose": "^4.7.0"
@@ -29,6 +30,16 @@
         , "jasmine-node": "^1.14.5"
         , "jsdoc": "^3.4.3"
         , "node-inspector": "^0.12.8"
+    }
+    , "notes": {
+        "//": "run coverage with ....."
+    }
+    , "repository": {
+        "type": "git"
+        , "url": "git+https://github.com/mccaffreyalex/304CEM-Assignment.git"
+    }
+    , "bugs": {
+        "url": "https://github.com/mccaffreyalex/304CEM-Assignment/issues"
     }
     , "notes": {
         "//": "npm run eslint"
