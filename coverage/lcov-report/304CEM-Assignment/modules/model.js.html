@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for 304CEM-Assignment/modules/model.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">304CEM-Assignment/modules/</a> model.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25.49% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>13/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">26% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/50</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
+//---------------------------------------------------------------------
+const api = require('./data-api')
+const model = require('./model')
+const persistence = require('./persistence')
+const status = {
+	ok: 200
+        , added: 201
+        , badRequest: 400
+}
+    //---------------------------------------------------------------------
+    /**
+     * Callback for searching Flickr &amp; Apixu weather in a promise chain
+     * @param {string} request - HTTP request
+     * @callback searchByTag
+     */
+&nbsp;
+exports.searchByTag = (request, callback) =&gt; {
+<span class="cstat-no" title="statement not covered" >	api.extractParam(request, 't').then(tag =&gt; <span class="cstat-no" title="statement not covered" >api.searchByTag(tag))</span>.then(searchResults =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		this.results = searchResults</span>
+<span class="cstat-no" title="statement not covered" >		return api.searchByID(searchResults.photo_id)</span>
+	}).then(data =&gt; {
+<span class="cstat-no" title="statement not covered" >		this.data = data</span>
+<span class="cstat-no" title="statement not covered" >		return api.searchWeather(request.params.t, data.dateTaken)</span>
+	}).then(weather =&gt; <span class="cstat-no" title="statement not covered" >api.combinedData(this.results, this.data, weather))</span>.then(data =&gt; {
+<span class="cstat-no" title="statement not covered" >		callback(null, data)</span>
+	}).catch(err =&gt; {
+<span class="cstat-no" title="statement not covered" >		callback(err)</span>
+	})
+}
+    /**
+     * Parses tag into searchByTag
+     * @function
+     * @param {string} req - HTTP request
+     * @param {string} res - HTTP response
+     * @returns {data} photo results, photo data, weather data combined
+     */
+exports.search = (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >	res.setHeader('content-type', 'application/json')</span>
+<span class="cstat-no" title="statement not covered" >	res.setHeader('accepts', 'GET')</span>
+<span class="cstat-no" title="statement not covered" >	model.searchByTag(req, (err, data) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		err ? res.send(status.badRequest, err) : res.send(status.ok, data)</span>
+<span class="cstat-no" title="statement not covered" >		res.end()</span>
+	})
+}
+    /**
+     * Shows a list of users stored in the 'users' collection
+     * @function
+     * @param {string} req - HTTP request
+     * @param {string} res - HTTP response
+     * @returns {[[Type]]} [[Description]]
+     */
+exports.showUsers = (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >	res.setHeader('content-type', 'application/json')</span>
+<span class="cstat-no" title="statement not covered" >	res.setHeader('accepts', 'GET')</span>
+<span class="cstat-no" title="statement not covered" >	persistence.showUsers(req, (err, data) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		err ? res.send(err) : res.send(data)</span>
+<span class="cstat-no" title="statement not covered" >		res.end()</span>
+	})
+}
+    /**
+     * Adds new user to 'users' collection
+     * @function
+     * @param {string} req - HTTP request
+     * @param {string} res - HTTP response
+     */
+exports.addUser = persistence.addUser
+exports.deleteUser = (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >	res.setHeader('content-type', 'application/json')</span>
+<span class="cstat-no" title="statement not covered" >	res.setHeader('accepts', 'DELETE')</span>
+<span class="cstat-no" title="statement not covered" >	persistence.deleteUser(req.params.username, (err, data) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		err ? res.send(err) : res.send(data)</span>
+<span class="cstat-no" title="statement not covered" >		res.end()</span>
+	})
+}
+    /**
+     * Shows all records in the photos collection
+     * @function
+     * @param {string} req - HTTP request
+     * @param {string} res - HTTP response
+     * @returns {[[Type]]} [[Description]]
+     */
+exports.showFavourites = (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >	res.setHeader('content-type', 'application/json')</span>
+<span class="cstat-no" title="statement not covered" >	res.setHeader('accepts', 'GET')</span>
+<span class="cstat-no" title="statement not covered" >	persistence.showFavourites(req, (err, data) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		err ? res.send(err) : res.send(data)</span>
+<span class="cstat-no" title="statement not covered" >		res.end()</span>
+	})
+}
+    /**
+     * Adds a photo to photos collection
+     * @function
+     * @param {number} photoID - id of photo
+     * @returns {[[Type]]} [[Description]]
+     */
+exports.addToFavourites = persistence.addToFavourites
+    /**
+     * Deletes a photo from the 'photos' collection
+     * @function
+     * @param {string} req - HTTP request
+     * @param {string} res - HTTP response
+     * @param {number} photoID - id of photo
+     * @returns {[[Type]]} [[Description]]
+     */
+exports.deleteFavourite = (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >	res.setHeader('content-type', 'application/json')</span>
+<span class="cstat-no" title="statement not covered" >	res.setHeader('accepts', 'DELETE')</span>
+<span class="cstat-no" title="statement not covered" >	persistence.deleteFavourite(req.params.photoID, (err, data) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		err ? res.send(err) : res.send(data)</span>
+<span class="cstat-no" title="statement not covered" >		res.end()</span>
+	})
+}
+    /**
+     * Updates photo id location based off the photoID
+     * @function
+     * @param {string} req - HTTP request
+     * @param {string} res - HTTP response
+     * @param {photoID} req.params.photoID - photoID
+     * @param {location} req.params.location - location
+     * @returns {[[Type]]} [[Description]]
+     */
+exports.update = (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >	res.setHeader('content-type', 'application/json')</span>
+<span class="cstat-no" title="statement not covered" >	res.setHeader('accepts', 'PUT')</span>
+<span class="cstat-no" title="statement not covered" >	persistence.update(req.params.photoID, req.params.location, (err, data) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >		err ? res.send(status.badRequest, err) : res.send(data)</span>
+	})
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Dec 09 2016 12:35:13 GMT+0000 (GMT)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
