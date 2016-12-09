@@ -13,7 +13,7 @@
     , "license": "ISC"
     , "homepage": "https://github.com/mccaffreyalex/304CEM-Assignment#readme"
     , "dependencies": {
-        , "git-flow": "^0.2.0"
+        "git-flow": "^0.2.0"
         , "istanbul": "^0.4.5"
         , "jasmine": "^2.5.2"
         , "jsdoc": "^3.4.2"
