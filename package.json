@@ -7,7 +7,7 @@
         "start": "node index.js"
         , "eslint": "eslint modules/* schema/* index.js --ext .js --fix"
         , "test": "jasmine-node spec/ --color --verbose "
-        , "coverage": "istanbul cover index.js **/spec** **/schema** jasmine-node flickr"
+        , "coverage": "node_modules/.bin/istanbul cover -x server.js -x /spec -x **/schema/**  jasmine-node spec"
     }
     , "author": "Alex McCaffrey"
     , "license": "ISC"
