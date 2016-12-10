@@ -16,6 +16,7 @@ exports.searchByTag = (tag, callback) => {
         if (err) callback(Error('failed to make API call'))
             ///console.log(url)
         const json = JSON.parse(body)
+
         if (json.photos.total === '0') callback({
             message: 'No photos found with tag'
         })
@@ -30,7 +31,6 @@ exports.searchByTag = (tag, callback) => {
                 , url: 'http://farm' + `${json.photos.photo[0].farm}` + '.staticflickr.com/' + `${json.photos.photo[0].server}` + '/' + `${json.photos.photo[0].id}` + '_' + `${json.photos.photo[0].secret}` + '.jpg'
                 , requestStatus: `${json.stat}`
             }
-
             callback(null, data)
         }
     })
