@@ -5,7 +5,7 @@
     , "main": "index.js"
     , "scripts": {
         "start": "node index.js"
-        , "eslint": "eslint modules/* schema/* index.js --ext .js --fix"
+        , "eslint": "eslint . -o out/eslint.html -f html --fix"
         , "test": "node_modules/.bin/jasmine-node spec --color --verbose --captureExceptions --autotest --watch ."
         , "coverage": "istanbul cover -x server.js -x /spec -x **/schema/**  jasmine-node spec"
     }
