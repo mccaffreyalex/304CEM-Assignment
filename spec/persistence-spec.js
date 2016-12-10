@@ -1,71 +1,70 @@
 const frisby = require('frisby')
-const hostURLUser = 'http://localhost:8080/users'
-const hostURLFav = 'http://localhost:8080/fav'
-const testUser = 'josh'
-const testPass = 'pass'
+const hostURL = 'http://localhost:8080/'
+const testUser = 'adam'
+const testPass = 'smith'
 const testPhotoID = '2016'
 const testLocation = 'Barcelona'
-const updatedLocation = 'Coventry'
 
 frisby.create('Adding a user')
-    .post(hostURLUser, {"username":testUser, "password":testPass})
+    .post(hostURL +'user', {"username":testUser, "password":testPass}, {json: true})
     .expectStatus(201)
     .expectHeaderContains('content-type', 'application/json')
-    .expectBodyContains(testUser)
-    .expectJSON({
-        "data": {
-            "password": testPass
-            , "username": testUser
-        }
-    })
+    .expectJSON({username: testUser, password: testPass})
 .toss()
 
 frisby.create('Listing users')
-    .get(hostURLUser)
+    .get(hostURL+ 'user')
     .expectStatus(200)
+    .auth(testUser, testPass, false)
     .expectHeaderContains('content-type', 'application/json')
     .expectJSON([{"username":testUser, "password":testPass}])
 .toss()
 
-frisby.create('Deleting a user')
-        .delete(hostURLUser, {"username":testUser, "password":testPass})
-        .expectStatus(200)
-        .expectHeaderContains('content-type', 'application/json')
-        .expectHeaderContains('accepts', 'DELETE')
-        .expectJSON({"ok":1, "n":1})
+frisby.create('Updating a password from smith -> thomas')
+    .put(hostURL + 'user', {"password":'thomas'}, {json: true})
+    .auth(testUser, testPass, false)
+    .expectStatus(200)
+    .expectJSON({'username':testUser, "password":'thomas'})
 .toss()
 
-//========================================================================
-
-frisby.create('Adding favourite')
-        .post(hostURLFav, {"photoID":testPhotoID, "location": testLocation})
-        .expectStatus(201)
-        .expectHeaderContains('content-type', 'application/json')
-        .expectJSON({
-        "data": {
-            "location": testLocation
-            , "photoID": testPhotoID
-        }
+frisby.create('Deleting a user')
+    .delete(hostURL + 'user')
+    .auth(testUser, testPass, false)
+    .expectStatus(200)
+    .expectHeaderContains('accepts', 'DELETE')
+    .expectJSON({
+        "message": "Successfully deleted"
     })
 .toss()
 
-frisby.create('Listing favourites')
-        .get(hostURLFav)
-        .expectStatus(200)
-        .expectHeaderContains('content-type', 'application/json')
-        .expectHeaderContains('accepts', 'GET')
-        .expectJSON([{"location":testLocation, "photoID":testPhotoID}])
+////========================================================================
+
+frisby.create('Adding favourite')
+    .post(hostURL + 'fav', {"photoID":testPhotoID, "location": testLocation}, {json: true})
+    .auth(testUser, testPass, false)
+    .expectStatus(201)
+    .expectHeaderContains('content-type', 'application/json')
+    .expectJSON({
+        "username": testUser
+        ,"location": testLocation
+        , "photoID": testPhotoID
+})
 .toss()
 
-frisby.create('Updating a favourite location from Barcelona to Coventry')
-        .put(hostURLFav + '/' + testPhotoID, {"photoID":testPhotoID, "location": updatedLocation})
-        .expectStatus(200)
-        //.expectJSON({"location":testLocation, "photoID":testPhotoID})
+frisby.create('Listing favourites')
+    .get(hostURL + 'fav')
+    .auth(testUser, testPass, false)
+    .expectStatus(200)
+    .expectHeaderContains('content-type', 'application/json')
+    .expectHeaderContains('accepts', 'GET')
+    .expectJSON([{"location":testLocation, "photoID":testPhotoID}])
 .toss()
 
 frisby.create('Deleting a favourite')
-        .delete(hostURLFav + '/' + testPhotoID)
-        .expectStatus(200)
-        .expectHeaderContains('content-type', 'application/json')
-        .expectJSON({"ok":1, "n":1})
+    .delete(hostURL + 'fav', {photoID: testPhotoID}, {json: true})
+    .auth(testUser, testPass, false)
+    .expectStatus(200)
+    .expectHeaderContains('content-type', 'application/json')
+    .expectHeaderContains('accepts', 'DELETE')
+    .expectJSON({message: 'Successfully deleted'})
 .toss()
