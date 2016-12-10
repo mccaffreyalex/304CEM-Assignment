@@ -22,7 +22,11 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
+<<<<<<< HEAD
         <span class='fraction'>9/9</span>
+=======
+        <span class='fraction'>13/13</span>
+>>>>>>> refs/remotes/origin/feature/develop
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +36,20 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
+<<<<<<< HEAD
         <span class='fraction'>0/0</span>
+=======
+        <span class='fraction'>2/2</span>
+>>>>>>> refs/remotes/origin/feature/develop
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
+<<<<<<< HEAD
         <span class='fraction'>9/9</span>
+=======
+        <span class='fraction'>13/13</span>
+>>>>>>> refs/remotes/origin/feature/develop
       </div>
     </div>
   </div>
@@ -72,31 +84,44 @@
 27
 28</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<<<<<<< HEAD
 <span class="cline-any cline-neutral">&nbsp;</span>
+=======
+>>>>>>> refs/remotes/origin/feature/develop
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+=======
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+>>>>>>> refs/remotes/origin/feature/develop
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+=======
+<span class="cline-any cline-yes">1×</span>
+>>>>>>> refs/remotes/origin/feature/develop
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
+<<<<<<< HEAD
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
 const mongoose = require('mongoose')
 &nbsp;
@@ -125,12 +150,52 @@ const photoSchema = new Schema({
 &nbsp;
 exports.photoModel = mongoose.model('Photo', photoSchema)
 &nbsp;</pre></td></tr>
+=======
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
+const mongoose = require('mongoose')
+const credentials = {
+    user: 'alex'
+    , pass: 'alex'
+}
+mongoose.connect(`mongodb://${credentials.user}:${credentials.pass}@ds113958.mlab.com:13958/304db`)
+mongoose.Promise = global.Promise
+const Schema = mongoose.Schema
+    , ObjectId = Schema.ObjectId
+const UserSchema = new Schema({
+    username: String
+    , password: String
+})
+exports.userModel = mongoose.model('users', UserSchema)
+const photoSchema = new Schema({
+    title: String
+    , author: String
+    , photoID: String
+})
+exports.photoModel = mongoose.model('Photo', photoSchema)
+    // using this to close the mongoose connection when running code coverage.
+process.on('SIGINT', function () {
+    mongoose.disconnect(function () {
+        console.log('Mongoose default connection disconnected through app termination');
+        process.exit(0)
+    })
+})</pre></td></tr>
+>>>>>>> refs/remotes/origin/feature/develop
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
+<<<<<<< HEAD
   generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Dec 08 2016 01:56:17 GMT+0000 (GMT)
+=======
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Dec 06 2016 20:20:35 GMT+0000 (GMT)
+>>>>>>> refs/remotes/origin/feature/develop
 </div>
 </div>
 <script src="../prettify.js"></script>

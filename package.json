@@ -31,6 +31,12 @@
         , "jsdoc": "^3.4.3"
         , "node-inspector": "^0.12.8"
     }
+<<<<<<< HEAD
+=======
+    , "notes": {
+        "//": "run coverage with ....."
+    }
+>>>>>>> refs/remotes/origin/feature/develop
     , "repository": {
         "type": "git"
         , "url": "git+https://github.com/mccaffreyalex/304CEM-Assignment.git"

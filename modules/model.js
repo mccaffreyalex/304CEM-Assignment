@@ -25,6 +25,7 @@ exports.searchByTag = (request, callback) => {
 }
 
 exports.addUser = (username, password, callback) => {
+<<<<<<< HEAD
     persistence.addUser(username, password).then(user => {
         callback(null, user)
     }).catch(err => {
@@ -77,4 +78,60 @@ exports.deleteFavPhotos = (username, photoID, callback) => {
     }).catch(err => {
         callback(err)
     })
+=======
+	persistence.addUser(username, password).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
+exports.getUser = (username, callback) => {
+	persistence.getUser(username).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
+}
+
+exports.deleteUser = (username, callback) => {
+	persistence.deleteUser(username).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
+}
+
+exports.updateUser = (username, password, callback) => {
+	persistence.updateUser(username, password).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
+}
+
+exports.addFavPhoto = (username, photoID, location, callback) => {
+	persistence.addFavPhoto(username, photoID, location).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
+}
+
+exports.getFavPhotos = (username, callback) => {
+	persistence.getFavPhotos(username).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
+}
+
+exports.deleteFavPhotos = (username, photoID, callback) => {
+	persistence.deleteFavPhotos(username, photoID).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
+>>>>>>> refs/remotes/origin/feature/develop
+}
+
+

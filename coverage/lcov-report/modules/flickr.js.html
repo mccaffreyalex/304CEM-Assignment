@@ -20,9 +20,15 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
+<<<<<<< HEAD
         <span class="strong">90.91% </span>
         <span class="quiet">Statements</span>
         <span class='fraction'>20/22</span>
+=======
+        <span class="strong">90.48% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>19/21</span>
+>>>>>>> refs/remotes/origin/feature/develop
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">75% </span>
@@ -37,7 +43,11 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
+<<<<<<< HEAD
         <span class='fraction'>18/18</span>
+=======
+        <span class='fraction'>17/17</span>
+>>>>>>> refs/remotes/origin/feature/develop
       </div>
     </div>
   </div>
@@ -88,6 +98,7 @@
 43
 44
 45
+<<<<<<< HEAD
 46
 47
 48
@@ -127,11 +138,20 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+=======
+46</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+>>>>>>> refs/remotes/origin/feature/develop
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4×</span>
+<<<<<<< HEAD
 <span class="cline-any cline-neutral">&nbsp;</span>
+=======
+>>>>>>> refs/remotes/origin/feature/develop
 <span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -146,11 +166,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <span class="cline-any cline-neutral">&nbsp;</span>
+=======
+>>>>>>> refs/remotes/origin/feature/develop
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,16 +186,26 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+=======
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+>>>>>>> refs/remotes/origin/feature/develop
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5×</span>
+<<<<<<< HEAD
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+=======
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+>>>>>>> refs/remotes/origin/feature/develop
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,6 +216,7 @@
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
 &nbsp;
@@ -208,6 +243,22 @@ exports.searchByTag = (tag, callback) =&gt; {
 		else {
 			const data = {
 				apiURL: url
+=======
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
+const request = require('request')
+exports.searchByTag = (tag, callback) =&gt; {
+    const url = `https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=47b47ea9fe9d92ff9aac9cc70acb388a&amp;tags=${tag}&amp;min_upload_date=1477958400&amp;per_page=1&amp;format=json&amp;nojsoncallback=1`
+    request.get(url, (err, res, body) =&gt; {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) <span class="cstat-no" title="statement not covered" >callback(Error('failed to make API call'))</span>
+            ///console.log(url)
+        const json = JSON.parse(body)
+        if (json.photos.total === '0') callback({
+            message: 'No photos found with tag'
+        })
+        else {
+            const data = {
+                apiURL: url
+>>>>>>> refs/remotes/origin/feature/develop
                 , searchTag: tag
                 , numberOfPhotos: `${json.photos.perpage}`
                 , photo_id: `${json.photos.photo[0].id}`
@@ -215,6 +266,7 @@ exports.searchByTag = (tag, callback) =&gt; {
                 , title: `${json.photos.photo[0].title}`
                 , url: 'http://farm' + `${json.photos.photo[0].farm}` + '.staticflickr.com/' + `${json.photos.photo[0].server}` + '/' + `${json.photos.photo[0].id}` + '_' + `${json.photos.photo[0].secret}` + '.jpg'
                 , requestStatus: `${json.stat}`
+<<<<<<< HEAD
 			}
 &nbsp;
 			callback(null, data)
@@ -254,12 +306,43 @@ exports.searchByID = (id, callback) =&gt; {
 	})
 }
 &nbsp;</pre></td></tr>
+=======
+            }
+            callback(null, data)
+        }
+    })
+}
+exports.searchByID = (id, callback) =&gt; {
+    const url = `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&amp;api_key=47b47ea9fe9d92ff9aac9cc70acb388a&amp;photo_id=${id}&amp;format=json&amp;nojsoncallback=1`
+    request.get(url, (err, res, body) =&gt; {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) <span class="cstat-no" title="statement not covered" >callback(Error('failed to make API call'))</span>
+            //console.log(url)
+        const json = JSON.parse(body)
+        if (json.stat === 'fail') callback(json)
+        else {
+            const data = {
+                ownerName: `${json.photo.owner.realname}`
+                , photoTitle: `${json.photo.title._content}`
+                , photoID: `${json.photo.id}`
+                , dateTaken: `${json.photo.dates.taken}`.substring(0, 10)
+                , photoURL: 'http://farm' + `${json.photo.farm}` + '.staticflickr.com/' + `${json.photo.server}` + '/' + `${json.photo.id}` + '_' + `${json.photo.secret}` + '.jpg'
+                , requestStatus: `${json.stat}`
+            }
+            callback(null, data)
+        }
+    })
+}</pre></td></tr>
+>>>>>>> refs/remotes/origin/feature/develop
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
+<<<<<<< HEAD
   generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Dec 09 2016 12:35:20 GMT+0000 (GMT)
+=======
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Dec 06 2016 20:20:35 GMT+0000 (GMT)
+>>>>>>> refs/remotes/origin/feature/develop
 </div>
 </div>
 <script src="../prettify.js"></script>

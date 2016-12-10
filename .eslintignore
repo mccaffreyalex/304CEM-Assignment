@@ -2,3 +2,7 @@ node_modules/
 coverage/
 out/
 modules/1. old
+spec/
+learning/
+client/
+
