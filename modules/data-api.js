@@ -2,7 +2,6 @@
 const flickr = require('./flickr')
 const weather = require('./weather')
 
-
 exports.extractParam = (request, param) => new Promise((resolve, reject) => {
 	if (request.params === undefined || request.params[param] === undefined) reject(new Error(`${param} parameter missing`))
 	resolve(request.params[param])
@@ -37,7 +36,7 @@ exports.searchWeather = (location, date) => new Promise((resolve, reject) => wea
  * @param {string} data - searchByID results
  * @param {string} weather - searchWeather results
  */
-exports.combinedData = (searchResults, data, weather) => new Promise((resolve, reject) => {
+exports.combinedData = (searchResults, data, weather) => new Promise((resolve) => {
 	resolve({
 		results: searchResults
         , data: data
