@@ -31,23 +31,4 @@
         , "jsdoc": "^3.4.3"
         , "node-inspector": "^0.12.8"
     }
-<<<<<<< HEAD
-=======
-    , "notes": {
-        "//": "run coverage with ....."
-    }
->>>>>>> refs/remotes/origin/feature/develop
-    , "repository": {
-        "type": "git"
-        , "url": "git+https://github.com/mccaffreyalex/304CEM-Assignment.git"
-    }
-    , "bugs": {
-        "url": "https://github.com/mccaffreyalex/304CEM-Assignment/issues"
-    }
-    , "notes": {
-        "//": "npm run eslint"
-        , "//": "run jsdoc with jsdoc modules/* schema/* spec/* index.js"
-        , "//": "run frisbee with npm run test"
-        , "//": "run coverage with ....."
-    }
 }
