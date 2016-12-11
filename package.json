@@ -1,34 +1,34 @@
 {
-    "name": "304cem-assignment"
-    , "version": "1.0.0"
-    , "description": "304CEM Web API Development Assignment"
-    , "main": "index.js"
-    , "scripts": {
-        "start": "node index.js"
-        , "eslint": "eslint . -o out/eslint.html -f html --fix"
-        , "test": "node_modules/.bin/jasmine-node spec --color --verbose --captureExceptions --autotest --watch ."
-        , "coverage": "istanbul cover -x server.js -x /spec -x **/schema/**  jasmine-node spec"
-    }
-    , "author": "Alex McCaffrey"
-    , "license": "ISC"
-    , "homepage": "https://github.com/mccaffreyalex/304CEM-Assignment#readme"
-    , "dependencies": {
-        "git-flow": "^0.2.0"
-        , "istanbul": "^0.4.5"
-        , "frisby": "^0.8.5"
-        , "jasmine": "^2.5.2"
-        , "jsdoc": "^3.4.2"
-        , "mongoose": "^4.7.0"
-        , "nodemon": "^1.11.0"
-        , "request": "^2.78.0"
-        , "restify": "^4.2.0"
-    }
-    , "devDependencies": {
-        "eslint": "^3.9.1"
-        , "frisby": "^0.8.5"
-        , "istanbul": "^0.4.5"
-        , "jasmine-node": "^1.14.5"
-        , "jsdoc": "^3.4.3"
-        , "node-inspector": "^0.12.8"
-    }
+  "name": "304cem-assignment",
+  "version": "1.0.0",
+  "description": "304CEM Web API Development Assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "eslint": "eslint . -o out/eslint.html -f html --fix",
+    "test": "node_modules/.bin/jasmine-node spec --color --verbose --captureExceptions --autotest --watch .",
+    "coverage": "istanbul cover -x server.js -x /spec -x **/schema/**  jasmine-node spec"
+  },
+  "author": "Alex McCaffrey",
+  "license": "ISC",
+  "homepage": "https://github.com/mccaffreyalex/304CEM-Assignment#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.0",
+    "frisby": "^0.8.5",
+    "git-flow": "^0.2.0",
+    "istanbul": "^0.4.5",
+    "jasmine": "^2.5.2",
+    "jsdoc": "^3.4.2",
+    "mongoose": "^4.7.0",
+    "nodemon": "^1.11.0",
+    "request": "^2.78.0",
+    "restify": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "frisby": "^0.8.5",
+    "istanbul": "^0.4.5",
+    "jasmine-node": "^1.14.5",
+    "jsdoc": "^3.4.3"
+  }
 }
