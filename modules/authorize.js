@@ -3,28 +3,29 @@ const bcrypt = require('bcryptjs')
 const persistence = require('./persistence')
 
 exports.hashPassword = (password) => new Promise((resolve, reject) => {
-    if (password === undefined) reject(new Error('Missing password'))
-    const salt = bcrypt.genSaltSync(10)
-    password = bcrypt.hashSync(password, salt)
-    resolve(password)
+	if (password === undefined) reject(new Error('Missing password'))
+	const salt = bcrypt.genSaltSync(10)
+
+	password = bcrypt.hashSync(password, salt)
+	resolve(password)
 })
 
 //nigel
 exports.authorise = request => new Promise( (resolve, reject) => {
-    getUserPass(request).then( reqCredentials => {
-        this.reqCreds = reqCredentials
-        return db.getUser(reqCredentials.username)
-    }).then( user => checkPassword(this.reqCreds.password, user.password)
+	getUserPass(request).then( reqCredentials => {
+		this.reqCreds = reqCredentials
+		return db.getUser(reqCredentials.username)
+	}).then( user => checkPassword(this.reqCreds.password, user.password)
  ).then( () => resolve()
  ).catch( err => reject(err.message === 'User not found.' ? new Error('Basic Authentication failed') : err))
 })
 
 //alex
 exports.authorize = (username, password) => new Promise((resolve, reject) => {
-    module.getPass(username, password).then(credentials => {
-        this.credentials = credentials
-        return persistence.getUser(credentials.username)
-    }).then(user => checkPassword(this.credentials.password, user.password))
+	module.getPass(username, password).then(credentials => {
+		this.credentials = credentials
+		return persistence.getUser(credentials.username)
+	}).then(user => checkPassword(this.credentials.password, user.password))
     .then(() => resolve()
     ).catch(err => reject(err.message === 'User not found.' ? new Error('Basic Authentication failed') : err))
 })
@@ -47,10 +48,10 @@ exports.authorize = (username, password) => new Promise((resolve, reject) => {
 //})
 
 module.getPass = (provided, stored) => new Promise((resolve, reject) => {
-    console.log('aa')
-    if (!bcrypt.compareSync(provided, stored)) {
-        reject(new Error('invalid password'))
-        console.log('rejected')
-    }
-    resolve()
+	console.log('aa')
+	if (!bcrypt.compareSync(provided, stored)) {
+		reject(new Error('invalid password'))
+		console.log('rejected')
+	}
+	resolve()
 })
