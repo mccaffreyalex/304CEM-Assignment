@@ -1,3 +1,4 @@
+'use stict'
 const frisby = require('frisby')
 const hostURL = 'http://localhost:8080/'
 const testUser = 'adam'

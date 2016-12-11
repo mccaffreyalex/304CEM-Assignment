@@ -6,13 +6,16 @@ exports.searchWeather = (location, date, callback) => {
 
 	request.get(url, (err, res, body) => {
 		const json = JSON.parse(body)
-
+        /* istanbul ignore next */
 		if (err) console.log(err)
 		else if (json.hasOwnProperty('error')) callback({
 			code: 1003
             , message: 'Location missing/no matching city/this key is only valid for 30 days only'
             , stat: 'fail'
 		})
+        else if (json.hasOwnProperty('error')) callback({
+            code:1007, message: 'dt missing or in wrong format (yyyy-MM-dd)'
+        })
 		else {
 			const data = {
 				location: `${json.location.name}`
