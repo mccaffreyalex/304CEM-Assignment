@@ -17,7 +17,7 @@ frisby.create('Adding a user with no password')
     .expectStatus(400)
     .expectHeaderContains('content-type', 'application/json')
     .expectJSON({
-        "message": "Username/password missing"
+        "message": "Missing password"
                 })
 .toss()
 
@@ -26,33 +26,31 @@ frisby.create('Listing a user with correct username/password')
     .expectStatus(200)
     .auth(testUser, testPass, false)
     .expectHeaderContains('content-type', 'application/json')
-    .expectJSON({"username":testUser})
+    .expectJSON([{"username":testUser}])
 .toss()
 
 frisby.create('Listing a user with incorrect username/password')
     .get(hostURL+ 'user')
-    .expectStatus(400)
-    .auth('jonny', 'ive', false)
+    .expectStatus(200)
+    .auth('jonny', 'ive')
     .expectHeaderContains('content-type', 'application/json')
+    .expectJSON([])
+.toss()
+
+frisby.create('Successfully updating a password from smith -> thomas')
+    .put(hostURL + 'user', {"password":'thomas'}, {json: true})
+    .auth(testUser, testPass, false)
+    .expectStatus(200)
+    .expectJSON({'username':testUser, "password":'thomas'})
+.toss()
+
+frisby.create('Trying to update a user that does not exist')
+    .put(hostURL + 'user', {"password":'thomas1'}, {json: true})
+    .auth('bob', 'bobob', false)
+    .expectStatus(400)
     .expectJSON({
-        "message": "Incorrect password/user does not exist"
-                })
-.toss()
-
-frisby.create('Successfully updating a password from smith -> thomas')
-    .put(hostURL + 'user', {"password":'thomas'}, {json: true})
-    .auth(testUser, testPass, false)
-    .expectStatus(200)
-    .expectJSON({'username':testUser, "password":'thomas'})
-.toss()
-
-//updating a user wrong pw
-
-frisby.create('Successfully updating a password from smith -> thomas')
-    .put(hostURL + 'user', {"password":'thomas'}, {json: true})
-    .auth(testUser, testPass, false)
-    .expectStatus(200)
-    .expectJSON({'username':testUser, "password":'thomas'})
+        "message": "User does not exist"
+        })
 .toss()
 
 frisby.create('Deleting a user')
@@ -65,7 +63,7 @@ frisby.create('Deleting a user')
     })
 .toss()
 
-//========================================================================
+////========================================================================
 
 frisby.create('Adding favourite')
     .post(hostURL + 'fav', {"photoID":testPhotoID, "location": testLocation}, {json: true})
