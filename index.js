@@ -4,9 +4,9 @@ const restify = require('restify')
 const index = require('./index')
 const server = restify.createServer()
 const handler = require('./modules/handler')
+const auth = require('./modules/authHandler')
 const defaultPort = 8080
 const port = process.env.PORT || defaultPort
-
 //---------------------------------------------------------------------
 /**
      * Shows all records in the photos collection
@@ -42,8 +42,8 @@ server.use(restify.acceptParser(server.acceptable))
 server.use(restify.authorizationParser())
 //---------------------------------------------------------------------
 server.get('/api', handler.search) // does search on city - yes ?q=london
-server.get('/user', handler.getUser) // shows users - DONE
-server.post('/user', handler.addUser) //add new user - DONE
+server.get('/user', handler.getUser) // shows users DONE
+server.post('/user', auth.authorize, handler.addUser) //add new user - DONE
 server.del('/user', handler.deleteUser) // delete user DONE
 server.put('/user', handler.updateUser) //update user DONE
 server.get('/fav', handler.getFavPhotos) //listing all favourites - DONE
