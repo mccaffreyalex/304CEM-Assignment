@@ -1,8 +1,8 @@
 'use strict'
 //---------------------------------------------------------------------
 const api = require('./data-api')
-
 const persistence = require('./persistence')
+const bcrypt = require('bcryptjs')
 //---------------------------------------------------------------------
     /**
      * Callback for searching Flickr & Apixu weather in a promise chain
@@ -31,8 +31,8 @@ exports.addUser = (username, password, callback) => {
         callback(err)
     })
 }
-exports.getUser = (username, callback) => {
-    persistence.getUser(username).then(user => {
+exports.getUser = (username, password, callback) => {
+    persistence.getUser(username, password).then(user => {
         callback(null, user)
     }).catch(err => {
         callback(err)
