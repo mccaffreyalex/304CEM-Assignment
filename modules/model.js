@@ -3,6 +3,7 @@
 const api = require('./data-api')
 const persistence = require('./persistence')
 const bcrypt = require('bcryptjs')
+const auth = require('./authorize')
 //---------------------------------------------------------------------
     /**
      * Callback for searching Flickr & Apixu weather in a promise chain
@@ -25,12 +26,13 @@ exports.searchByTag = (request, callback) => {
 }
 
 exports.addUser = (username, password, callback) => {
-    persistence.addUser(username, password).then(user => {
+    auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
         callback(null, user)
     }).catch(err => {
         callback(err)
     })
 }
+
 exports.getUser = (username, password, callback) => {
     persistence.getUser(username, password).then(user => {
         callback(null, user)
