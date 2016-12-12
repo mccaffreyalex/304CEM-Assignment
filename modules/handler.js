@@ -5,6 +5,14 @@ const status = {
     , added: 201
     , badRequest: 400
 }
+/**
+ * Sends request to searchByTag function in model.js
+ * @function
+ * @param {string} req - HTTP request
+ * @param {string} res - HTTP response
+ * @throws HTTP code 400, err
+ * @returns {[[Type]]} [[Description]]
+ */
 
 exports.search = (req, res) => {
 	res.setHeader('content-type', 'application/json')
@@ -14,6 +22,14 @@ exports.search = (req, res) => {
 		res.end()
 	})
 }
+/**
+ * Adds user to users collection
+ * @function
+ * @param {string} req - HTTP request
+ * @param {string} res - HTTP response
+ * @throws HTTP code 400, err
+ * @returns {[[Type]]} [[Description]]
+ */
 exports.addUser = (req, res) => {
 	res.setHeader('content-type', 'application/json')
 	res.setHeader('accepts', 'POST')
@@ -22,13 +38,14 @@ exports.addUser = (req, res) => {
 		res.end()
 	})
 }
-    /**
-     * Shows a list of users stored in the 'users' collection
-     * @function
-     * @param {string} req - HTTP request
-     * @param {string} res - HTTP response
-     * @returns {[[Type]]} [[Description]]
-     */
+/**
+ * Shows a list of users stored in the 'users' collection
+ * @function
+ * @param {string} req - HTTP request
+ * @param {string} res - HTTP response
+ * @throws HTTP code 400, err
+ * @returns {[[Type]]} [[Description]]
+ */
 exports.getUser = (req, res) => {
 	res.setHeader('content-type', 'application/json')
 	res.setHeader('accepts', 'GET')
@@ -37,12 +54,15 @@ exports.getUser = (req, res) => {
 		res.end()
 	})
 }
-    /**
-     * Adds new user to 'users' collection
-     * @function
-     * @param {string} req - HTTP request
-     * @param {string} res - HTTP response
-     */
+
+/**
+ * Adds new user to 'users' collection
+ * @function
+ * @param {string} req - HTTP request
+ * @param {string} res - HTTP response
+ * @throws HTTP code 400, err
+ * @returns updated user
+ */
 exports.updateUser = (req, res) => {
 	res.setHeader('content-type', 'application/json')
 	res.setHeader('accepts', 'PUT')
@@ -51,6 +71,14 @@ exports.updateUser = (req, res) => {
 		res.end()
 	})
 }
+
+/**
+* Deletes user from users collection
+* @param {string} req - HTTP request
+* @param {string} res - HTTP response
+* @throws HTTP code 400, err
+* @returns deleted user
+*/
 exports.deleteUser = (req, res) => {
 	res.setHeader('content-type', 'application/json')
 	res.setHeader('accepts', 'DELETE')
@@ -59,13 +87,15 @@ exports.deleteUser = (req, res) => {
 		res.end()
 	})
 }
-    /**
-     * Shows all records in the photos collection
-     * @function
-     * @param {string} req - HTTP request
-     * @param {string} res - HTTP response
-     * @returns {[[Type]]} [[Description]]
-     */
+
+/**
+ * Shows all records in the photos collection
+ * @function
+ * @param {string} req - HTTP request
+ * @param {string} res - HTTP response
+ * @throws HTTP code 400, err
+ * @returns {[[Type]]} [[Description]]
+ */
 exports.getFavPhotos = (req, res) => {
 	res.setHeader('content-type', 'application/json')
 	res.setHeader('accepts', 'GET')
@@ -74,13 +104,15 @@ exports.getFavPhotos = (req, res) => {
 		res.end()
 	})
 }
-    /**
-     * Adds a photo to photos collection
-     * @function
-     * @param {string} req - HTTP request
-     * @param {string} res - HTTP response
-     * @returns {[[Type]]} [[Description]]
-     */
+
+/**
+ * Adds a photo to photos collection
+ * @function
+ * @param {string} req - HTTP request
+ * @param {string} res - HTTP response
+ * @throws HTTP code 400, err
+ * @returns {[[Type]]} [[Description]]
+ */
 exports.addFavPhoto = (req, res) => {
 	res.setHeader('content-type', 'application/json')
 	res.setHeader('accepts', 'POST')
@@ -89,14 +121,16 @@ exports.addFavPhoto = (req, res) => {
 		res.end()
 	})
 }
-    /**
-     * Deletes a photo from the 'photos' collection
-     * @function
-     * @param {string} req - HTTP request
-     * @param {string} res - HTTP response
-     * @param {number} photoID - id of photo
-     * @returns {[[Type]]} [[Description]]
-     */
+
+/**
+ * Deletes a photo from the 'photos' collection
+ * @function
+ * @param {string} req - HTTP request
+ * @param {string} res - HTTP response
+ * @param {number} photoID - id of photo
+ * @throws HTTP code 400, err
+ * @returns {[[Type]]} [[Description]]
+ */
 exports.deleteFavPhotos = (req, res) => {
 	res.setHeader('content-type', 'application/json')
 	res.setHeader('accepts', 'DELETE')
@@ -105,12 +139,3 @@ exports.deleteFavPhotos = (req, res) => {
 		res.end()
 	})
 }
-    /**
-     * Updates photo id location based off the photoID
-     * @function
-     * @param {string} req - HTTP request
-     * @param {string} res - HTTP response
-     * @param {photoID} req.params.photoID - photoID
-     * @param {location} req.params.location - location
-     * @returns {[[Type]]} [[Description]]
-     */

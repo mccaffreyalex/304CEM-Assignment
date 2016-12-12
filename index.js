@@ -52,15 +52,6 @@ server.post('/fav', handler.addFavPhoto)
 server.del('/fav', handler.deleteFavPhotos)
 //---------------------------------------------------------------------
 
-/**
-     * Parses tag into searchByTag
-     * @function
-     * @param {string} req - HTTP request
-     * @param {string} res - HTTP response
-     * @returns {data} photo results, photo data, weather data combined
-     */
-
-
 server.listen(port, err => console.log(err || `Server running at: http://localhost:${port}`))
 
 

@@ -2,6 +2,13 @@
 const bcrypt = require('bcryptjs')
 const persistence = require('./persistence')
 
+/**
+*Hashes user password which is passed back to addUser function
+*@param {string} password - password to be hashed
+*@throws Will throw error if password is missing from request
+*@returns hashed password against the salt
+*/
+
 exports.hashPassword = (password) => new Promise((resolve, reject) => {
 	if (password === undefined) reject(new Error('Missing password'))
 	const salt = bcrypt.genSaltSync(10)
