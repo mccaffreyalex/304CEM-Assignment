@@ -42,7 +42,7 @@ server.use(restify.bodyParser())
 server.use(restify.acceptParser(server.acceptable))
 server.use(restify.authorizationParser())
 //---------------------------------------------------------------------
-server.get('/', restify.serveStatic({
+server.get('/help', restify.serveStatic({
     'directory': './client',
     'default': 'index.html'
 }))
