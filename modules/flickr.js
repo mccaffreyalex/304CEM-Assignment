@@ -3,6 +3,10 @@
 const request = require('request')
 
 /**
+*@module Flickr Module
+*/
+
+/**
  * Searching for Flickr photo by tag
  * @function
  * @callback searchByTag

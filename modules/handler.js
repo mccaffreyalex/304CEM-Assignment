@@ -5,13 +5,18 @@ const status = {
     , added: 201
     , badRequest: 400
 }
+
+/**
+*@module Handler Module
+*/
+
 /**
  * Sends request to searchByTag function in model.js
  * @function
  * @param {string} req - HTTP request
  * @param {string} res - HTTP response
  * @throws HTTP code 400, err
- * @returns {[[Type]]} [[Description]]
+ * @returns {JSON} combinedData in JSON format
  */
 
 exports.search = (req, res) => {
@@ -44,7 +49,7 @@ exports.addUser = (req, res) => {
  * @param {string} req - HTTP request
  * @param {string} res - HTTP response
  * @throws HTTP code 400, err
- * @returns {string} [[Description]]
+ * @returns {string} user details
  */
 exports.getUser = (req, res) => {
     res.setHeader('content-type', 'application/json')
@@ -94,7 +99,7 @@ exports.deleteUser = (req, res) => {
  * @param {string} req - HTTP request
  * @param {string} res - HTTP response
  * @throws HTTP code 400, err
- * @returns {string} show
+ * @returns {string} shows photos listed in photos collection
  */
 exports.getFavPhotos = (req, res) => {
     res.setHeader('content-type', 'application/json')
