@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: model.js</title>
+    <title>JSDoc: Source: modules/model.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: model.js</h1>
+    <h1 class="page-title">Source: modules/model.js</h1>
 
     
 
@@ -33,9 +33,6 @@ const persistence = require('./persistence')
 const auth = require('./authorize')
 //---------------------------------------------------------------------
 
-/**
-*@module Model Module
-*/
 
 /**
 * Callback for searching Flickr &amp; Apixu weather in a promise chain
@@ -45,17 +42,17 @@ const auth = require('./authorize')
 * @returns {string} combinedData
 */
 exports.searchByTag = (request, callback) => {
-    api.extractParam(request, 't').then(tag => api.searchByTag(tag)).then(searchResults => {
-        this.results = searchResults
-        return api.searchByID(searchResults.photo_id)
-    }).then(data => {
-        this.data = data
-        return api.searchWeather(request.params.t, data.dateTaken)
-    }).then(weather => api.combinedData(this.results, this.data, weather)).then(data => {
-        callback(null, data)
-    }).catch(err => {
-        callback(err)
-    })
+	api.extractParam(request, 't').then(tag => api.searchByTag(tag)).then(searchResults => {
+		this.results = searchResults
+		return api.searchByID(searchResults.photo_id)
+	}).then(data => {
+		this.data = data
+		return api.searchWeather(request.params.t, data.dateTaken)
+	}).then(weather => api.combinedData(this.results, this.data, weather)).then(data => {
+		callback(null, data)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -68,11 +65,11 @@ exports.searchByTag = (request, callback) => {
 * @returns {string} user added to users collection
 */
 exports.addUser = (username, password, callback) => {
-    auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -84,11 +81,11 @@ exports.addUser = (username, password, callback) => {
 * @returns {string} username/password
 */
 exports.getUser = (username, password, callback) => {
-    persistence.getUser(username, password).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.getUser(username, password).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -99,11 +96,11 @@ exports.getUser = (username, password, callback) => {
 * @returns {string} updated username/password
 */
 exports.updateUser = (username, password, callback) => {
-    persistence.updateUser(username, password).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.updateUser(username, password).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -113,11 +110,11 @@ exports.updateUser = (username, password, callback) => {
 * @returns {string} user deleted
 */
 exports.deleteUser = (username, callback) => {
-    persistence.deleteUser(username).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.deleteUser(username).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -129,11 +126,11 @@ exports.deleteUser = (username, callback) => {
 * @returns {string} new entry in photos collection
 */
 exports.addFavPhoto = (username, photoID, location, callback) => {
-    persistence.addFavPhoto(username, photoID, location).then(photo => {
-        callback(null, photo)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.addFavPhoto(username, photoID, location).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -143,11 +140,11 @@ exports.addFavPhoto = (username, photoID, location, callback) => {
 * @returns {string} photos listed for that username
 */
 exports.getFavPhotos = (username, callback) => {
-    persistence.getFavPhotos(username).then(photo => {
-        callback(null, photo)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.getFavPhotos(username).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -159,19 +156,19 @@ exports.getFavPhotos = (username, callback) => {
 * @returns {string} photo deleted
 */
 exports.deleteFavPhotos = (username, photoID, callback) => {
-    persistence.deleteFavPhotos(username, photoID).then(photo => {
-        callback(null, photo)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.deleteFavPhotos(username, photoID).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 exports.addUser = (username, password, callback) => {
-    auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 </code></pre>
         </article>
@@ -183,13 +180,13 @@ exports.addUser = (username, password, callback) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Authorize%2520Module.html">Authorize Module</a></li><li><a href="module-Data-API%2520Module.html">Data-API Module</a></li><li><a href="module-Flickr%2520Module.html">Flickr Module</a></li><li><a href="module-Handler%2520Module.html">Handler Module</a></li><li><a href="module-Model%2520Module.html">Model Module</a></li><li><a href="module-Persistence%2520Module.html">Persistence Module</a></li><li><a href="module-Weather%2520Module.html">Weather Module</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="Flickr.module_js%2520Module.html">js Module</a></li><li><a href="Weather.module_js%2520Module.html">js Module</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addFavPhoto">addFavPhoto</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#combinedData">combinedData</a></li><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#getFavPhotos">getFavPhotos</a></li><li><a href="global.html#log_rounds">log_rounds</a></li><li><a href="global.html#respond">respond</a></li><li><a href="global.html#search">search</a></li><li><a href="global.html#searchByID">searchByID</a></li><li><a href="global.html#searchByTag">searchByTag</a></li><li><a href="global.html#searchWeather">searchWeather</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Dec 12 2016 21:44:20 GMT+0000 (GMT Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Dec 12 2016 21:41:09 GMT+0000 (GMT Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
