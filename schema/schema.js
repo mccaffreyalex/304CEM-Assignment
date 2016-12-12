@@ -1,6 +1,5 @@
 'use strict'
 const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
 const credentials = {
 	user: 'alex'
     , pass: 'alex'
@@ -26,7 +25,7 @@ const photoSchema = new Schema({
 
 exports.photoModel = mongoose.model('Photo', photoSchema)
 
-    // using this to close the mongoose connection when running code coverage.
+    // using this to close the mongoose connection when running code coverage
 process.on('SIGINT', function() {
 	mongoose.disconnect(function() {
 		console.log('Mongoose default connection disconnected through app termination')

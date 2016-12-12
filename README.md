@@ -1,3 +1,4 @@
 # Web API Development-Assignment
-304CEM Assignment
+
+RESTful API, combining Flickr API & Apixu API to
 

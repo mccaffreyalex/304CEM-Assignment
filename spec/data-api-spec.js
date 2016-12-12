@@ -1,7 +1,7 @@
 'use strict'
 const frisby = require('frisby')
 const hostURL = 'http://localhost:8080/'
-const correctTag = 'London'
+const correctTag = 'New York'
 const incorrectTag = 'randomtaghere'
 frisby.create('API /GET should return 200 for a successful search')
     .get(hostURL + 'api?t=' + correctTag)
@@ -16,8 +16,6 @@ frisby.create('API /GET should return 200 for a successful search')
             }
         )
 .toss()
-
-//location failed
 
 frisby.create('My API should return 400 for a failed search')
     .get(hostURL + 'api?t=' + incorrectTag)

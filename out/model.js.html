@@ -27,89 +27,86 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>'use strict'
+//---------------------------------------------------------------------
 const api = require('./data-api')
-const model = require('./model')
 const persistence = require('./persistence')
-const status = {
-        ok: 200
-        , added: 201
-        , badRequest: 400
-    }
-
+const bcrypt = require('bcryptjs')
+const auth = require('./authorize')
+//---------------------------------------------------------------------
     /**
      * Callback for searching Flickr &amp; Apixu weather in a promise chain
-     * @param {string} request - http request
+     * @param {string} request - HTTP request
      * @callback searchByTag
      */
 
 exports.searchByTag = (request, callback) => {
-    api.extractParam(request, 't').then(tag => api.searchByTag(tag)).then(searchResults => {
-        this.results = searchResults
-        return api.searchByID(searchResults.photo_id)
-    }).then(data => {
-        this.data = data
-        return api.searchWeather(request.params.t, data.dateTaken)
-    }).then(weather => api.combinedData(this.results, this.data, weather)).then(data => {
-        callback(null, data)
-    }).catch(err => {
-        callback(err)
-    })
+	api.extractParam(request, 't').then(tag => api.searchByTag(tag)).then(searchResults => {
+		this.results = searchResults
+		return api.searchByID(searchResults.photo_id)
+	}).then(data => {
+		this.data = data
+		return api.searchWeather(request.params.t, data.dateTaken)
+	}).then(weather => api.combinedData(this.results, this.data, weather)).then(data => {
+		callback(null, data)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
-exports.addUser = persistence.addUser
-
-exports.showUsers = (req, res) => { //lists all users
-    persistence.showUsers(req, (err, data) => {
-        res.setHeader('content-type', 'application/json')
-        res.setHeader('accepts', 'GET')
-        err ? res.send(err) : res.send(data)
-        res.end()
-    })
+exports.addUser = (username, password, callback) => {
+	auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
-exports.addToFavourites = persistence.addToFavourites
-
-exports.showFavourites = (req, res) => { //lists all users
-    persistence.showFavourites(req, (err, data) => {
-        res.setHeader('content-type', 'application/json')
-        res.setHeader('accepts', 'GET')
-        err ? res.send(err) : res.send(data)
-        res.end()
-    })
+exports.getUser = (username, password, callback) => {
+	persistence.getUser(username, password).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
-/**
-     * Deletes photo from photos collection, by photoID
-     * @function
-     * @param {string} req - http request
-     * @param {string} res - http response
-     * @param {number} photoID - id of photo
-     */
-
-exports.deleteFavourite = (req, res) => {
-    persistence.deleteFavourite(req.params.photoID, (err, data) => {
-        res.setHeader('content-type', 'application/json')
-        res.setHeader('accepts', 'DELETE')
-        err ? res.send(err) : res.send(data)
-        res.end()
-    })
+exports.deleteUser = (username, callback) => {
+	persistence.deleteUser(username).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
-exports.search = (req, res) => {
-    model.searchByTag(req, (err, data) => {
-        res.setHeader('content-type', 'application/json')
-        res.setHeader('accepts', 'GET')
-        err ? res.send(status.badRequest, err) : res.send(status.ok, data)
-        res.end()
-    })
+exports.updateUser = (username, password, callback) => {
+	persistence.updateUser(username, password).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
-exports.update = (req, res) => {
-    persistence.update(req.params.photoID, req.params.photoID, (err, data) => {
-        res.setHeader('content-type', 'application/json')
-        res.setHeader('accepts', 'PUT')
-        err ? res.send(status.badRequest, err) : res.send(data)
-    })
+exports.addFavPhoto = (username, photoID, location, callback) => {
+	persistence.addFavPhoto(username, photoID, location).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
+}
+
+exports.getFavPhotos = (username, callback) => {
+	persistence.getFavPhotos(username).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
+}
+
+exports.deleteFavPhotos = (username, photoID, callback) => {
+	persistence.deleteFavPhotos(username, photoID).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
 }
 </code></pre>
         </article>
@@ -121,13 +118,13 @@ exports.update = (req, res) => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="combinedData.html">combinedData</a></li><li><a href="global.html#searchByID">searchByID</a></li><li><a href="global.html#searchByTag">searchByTag</a></li><li><a href="searchWeather.html">searchWeather</a></li></ul><h3>Global</h3><ul><li><a href="global.html#deleteFavourite">deleteFavourite</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="combinedData.html">combinedData</a></li><li><a href="global.html#searchByID">searchByID</a></li><li><a href="global.html#searchByTag">searchByTag</a></li><li><a href="searchWeather.html">searchWeather</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addFavPhoto">addFavPhoto</a></li><li><a href="global.html#deleteFavPhotos">deleteFavPhotos</a></li><li><a href="global.html#getFavPhotos">getFavPhotos</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Dec 07 2016 23:13:02 GMT+0000 (GMT Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Dec 11 2016 23:34:48 GMT+0000 (GMT Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

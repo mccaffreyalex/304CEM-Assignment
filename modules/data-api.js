@@ -15,17 +15,17 @@ exports.extractParam = (request, param) => new Promise((resolve, reject) => {
 exports.searchByTag = tag => new Promise((resolve, reject) => flickr.searchByTag(tag, (err, result) => err ? reject(err) : resolve(result)))
 
 /**
- * Searching for Flickr photo by tag.
+ * Searching for Flickr photo by ID.
  * @constructor
  * @param {string} id - The id of the book.
  */
 exports.searchByID = id => new Promise((resolve, reject) => flickr.searchByID(id, (err, result) => err ? reject(err) : resolve(result)))
 
 /**
- * Searching for Flickr photo by tag.
+ * Searching for Apixu Weather by location, data.
  * @constructor
- * @param {string} location - The title of the book.
- * @param {string} date - The author of the book.
+ * @param {string} location - location
+ * @param {string} date - date
  */
 exports.searchWeather = (location, date) => new Promise((resolve, reject) => weather.searchWeather(location, date, (err, result) => err ? reject(err) : resolve(result)))
 

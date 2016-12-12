@@ -22,6 +22,15 @@ frisby.create('Adding a user with no password')
                 })
 .toss()
 
+frisby.create('Adding a user with no username')
+    .post(hostURL +'user', {"password":testPass}, {json: true})
+    .expectStatus(400)
+    .expectHeaderContains('content-type', 'application/json')
+    .expectJSON({
+        "message": "Username missing"
+                })
+.toss()
+
 frisby.create('Listing a user with correct username/password')
     .get(hostURL+ 'user')
     .expectStatus(200)
@@ -54,9 +63,9 @@ frisby.create('Trying to update a user that does not exist')
         })
 .toss()
 
-frisby.create('Deleting a user')
+frisby.create('Deleting a user successfully')
     .delete(hostURL + 'user')
-    .auth(testUser, testPass, false)
+    .auth(testUser, 'thomas', false)
     .expectStatus(200)
     .expectHeaderContains('accepts', 'DELETE')
     .expectJSON({
@@ -78,13 +87,33 @@ frisby.create('Adding favourite')
 })
 .toss()
 
-frisby.create('Listing favourites')
+frisby.create('Adding favourite with missing location')
+    .post(hostURL + 'fav', {"photoID":testPhotoID}, {json: true})
+    .auth(testUser, testPass, false)
+    .expectStatus(400)
+    .expectHeaderContains('content-type', 'application/json')
+    .expectJSON({
+        "message": "Username/photoID/location missing"
+            })
+.toss()
+
+
+frisby.create('Listing favourites with valid username')
     .get(hostURL + 'fav')
     .auth(testUser, testPass, false)
     .expectStatus(200)
     .expectHeaderContains('content-type', 'application/json')
     .expectHeaderContains('accepts', 'GET')
     .expectJSON([{"location":testLocation, "photoID":testPhotoID}])
+.toss()
+
+frisby.create('Listing favourites with invalid username')
+    .get(hostURL + 'fav')
+    .auth('liam', 'west', false)
+    .expectStatus(200)
+    .expectHeaderContains('content-type', 'application/json')
+    .expectHeaderContains('accepts', 'GET')
+    .expectJSON([])
 .toss()
 
 frisby.create('Deleting a favourite')

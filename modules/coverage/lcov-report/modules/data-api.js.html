@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for modules/data-api.js</title>
+    <title>Code coverage report for modules\data-api.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">31.82% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/22</span>
+        <span class='fraction'>7/22</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">70% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>7/10</span>
       </div>
     </div>
   </div>
@@ -91,12 +91,27 @@
 46
 47
 48</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,22 +119,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,7 +128,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,10 +138,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
-<span class="cstat-no" title="statement not covered" >const flickr = require('./flickr')</span>
-<span class="cstat-no" title="statement not covered" >const weather = require('./weather')</span>
+const flickr = require('./flickr')
+const weather = require('./weather')
 &nbsp;
-<span class="cstat-no" title="statement not covered" >exports.extractParam = (request, param) =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve, reject) =&gt; {</span></span>
+exports.extractParam = (request, param) =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve, reject) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >	if (request.params === undefined || request.params[param] === undefined) <span class="cstat-no" title="statement not covered" >reject(new Error(`${param} parameter missing`))</span></span>
 <span class="cstat-no" title="statement not covered" >	resolve(request.params[param])</span>
 })
@@ -151,14 +151,14 @@
  * @constructor
  * @param {string} tag - The tag the user enters
  */
-<span class="cstat-no" title="statement not covered" >exports.searchByTag = tag =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve, reject) =&gt; <span class="cstat-no" title="statement not covered" >flickr.searchByTag(tag, (err, result) =&gt; <span class="cstat-no" title="statement not covered" >err ? reject(err) : resolve(result))</span>)</span></span></span>
+exports.searchByTag = tag =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve, reject) =&gt; <span class="cstat-no" title="statement not covered" >flickr.searchByTag(tag, (err, result) =&gt; <span class="cstat-no" title="statement not covered" >err ? reject(err) : resolve(result))</span>)</span></span>
 &nbsp;
 /**
  * Searching for Flickr photo by tag.
  * @constructor
  * @param {string} id - The id of the book.
  */
-<span class="cstat-no" title="statement not covered" >exports.searchByID = id =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve, reject) =&gt; <span class="cstat-no" title="statement not covered" >flickr.searchByID(id, (err, result) =&gt; <span class="cstat-no" title="statement not covered" >err ? reject(err) : resolve(result))</span>)</span></span></span>
+exports.searchByID = id =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve, reject) =&gt; <span class="cstat-no" title="statement not covered" >flickr.searchByID(id, (err, result) =&gt; <span class="cstat-no" title="statement not covered" >err ? reject(err) : resolve(result))</span>)</span></span>
 &nbsp;
 /**
  * Searching for Flickr photo by tag.
@@ -166,7 +166,7 @@
  * @param {string} location - The title of the book.
  * @param {string} date - The author of the book.
  */
-<span class="cstat-no" title="statement not covered" >exports.searchWeather = (location, date) =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve, reject) =&gt; <span class="cstat-no" title="statement not covered" >weather.searchWeather(location, date, (err, result) =&gt; <span class="cstat-no" title="statement not covered" >err ? reject(err) : resolve(result))</span>)</span></span></span>
+exports.searchWeather = (location, date) =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve, reject) =&gt; <span class="cstat-no" title="statement not covered" >weather.searchWeather(location, date, (err, result) =&gt; <span class="cstat-no" title="statement not covered" >err ? reject(err) : resolve(result))</span>)</span></span>
 &nbsp;
 /**
  * Searching for Flickr photo by tag.
@@ -175,7 +175,7 @@
  * @param {string} data - searchByID results
  * @param {string} weather - searchWeather results
  */
-<span class="cstat-no" title="statement not covered" >exports.combinedData = (searchResults, data, weather) =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve) =&gt; {</span></span>
+exports.combinedData = (searchResults, data, weather) =&gt; <span class="cstat-no" title="statement not covered" >new Promise((resolve) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >	resolve({</span>
 		results: searchResults
         , data: data
@@ -190,7 +190,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Dec 11 2016 08:01:34 GMT+0000 (GMT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Dec 11 2016 15:50:13 GMT+0000 (GMT Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

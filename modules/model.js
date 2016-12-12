@@ -7,11 +7,12 @@ const auth = require('./authorize')
 
 
 /**
- * Callback for searching Flickr & Apixu weather in a promise chain
- * @param {string} request - HTTP request
- * @callback searchByTag
- * @returns
- */
+* Callback for searching Flickr & Apixu weather in a promise chain
+* @callback searchByTag
+* @param {string} request - HTTP request
+* @param {callback} callback - the callback that handles the response
+* @returns {string} combinedData
+*/
 exports.searchByTag = (request, callback) => {
 	api.extractParam(request, 't').then(tag => api.searchByTag(tag)).then(searchResults => {
 		this.results = searchResults
@@ -28,10 +29,12 @@ exports.searchByTag = (request, callback) => {
 
 /**
 * Callback for adding a user to users collection, first the pwd is hashed
-*@param {string} username - username to be added to collection
-*@param {string} password - password to be added to collection
-*@throws
-*@callback 
+* @callback addUser
+* @param {string} username - username to be added to collection
+* @param {string} password - password to be added to collection
+* @param {callback} callback - the callback that handles the response
+* @throws Will throw error
+* @returns {string} user added to users collection
 */
 exports.addUser = (username, password, callback) => {
 	auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
@@ -43,8 +46,11 @@ exports.addUser = (username, password, callback) => {
 
 /**
 * Callback for getting user information
-* @params {string} username - username to be searched
-* @params {string} password - password to be searched
+* @callback getUser
+* @param {string} username - username to be searched
+* @param {string} password - password to be searched
+* @param {callback} callback - the callback that handles the response
+* @returns {string} username/password
 */
 exports.getUser = (username, password, callback) => {
 	persistence.getUser(username, password).then(user => {
@@ -56,8 +62,10 @@ exports.getUser = (username, password, callback) => {
 
 /**
 * Callback for getting user information
-* @params {string} username - username to be searched
-* @params {string} password - password to be searched
+* @param {string} username - username to be searched
+* @param {string} password - password to be searched
+* @param {callback} callback - the callback that handles the response
+* @returns {string} updated username/password
 */
 exports.updateUser = (username, password, callback) => {
 	persistence.updateUser(username, password).then(user => {
@@ -69,7 +77,9 @@ exports.updateUser = (username, password, callback) => {
 
 /**
 * Callback for getting user information
-* @params {string} username - username to be searched
+* @param {string} username - username to be searched
+* @param {callback} callback - the callback that handles the response
+* @returns {string} user deleted
 */
 exports.deleteUser = (username, callback) => {
 	persistence.deleteUser(username).then(user => {
@@ -81,9 +91,11 @@ exports.deleteUser = (username, callback) => {
 
 /**
 * Callback for getting user information
-* @params {string} username - username to be searched
-* @params {string} photoID - ID of photo to be added
-* @params {string} location - location of photo
+* @param {string} username - username to be searched
+* @param {string} photoID - ID of photo to be added
+* @param {string} location - location of photo
+* @param {callback} callback - the callback that handles the response
+* @returns {string} new entry in photos collection
 */
 exports.addFavPhoto = (username, photoID, location, callback) => {
 	persistence.addFavPhoto(username, photoID, location).then(photo => {
@@ -95,7 +107,9 @@ exports.addFavPhoto = (username, photoID, location, callback) => {
 
 /**
 * Callback for getting user information
-* @params {string} username - username to be searched
+* @param {string} username - username to be searched
+* @param {callback} callback - the callback that handles the response
+* @returns {string} photos listed for that username
 */
 exports.getFavPhotos = (username, callback) => {
 	persistence.getFavPhotos(username).then(photo => {
@@ -107,13 +121,23 @@ exports.getFavPhotos = (username, callback) => {
 
 /**
 *Callback for deleting a favourite photo from photos collection
-*@params username {string} username - user for photo to be deleted against
-*@params {string} photoID - ID of photo to be deleted
-*@callback deleteFavPhotos
+* @callback deleteFavPhotos
+* @param {string} username - user for photo to be deleted against
+* @param {string} photoID - ID of photo to be deleted
+* @param {callback} callback - the callback that handles the response
+* @returns {string} photo deleted
 */
 exports.deleteFavPhotos = (username, photoID, callback) => {
 	persistence.deleteFavPhotos(username, photoID).then(photo => {
 		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
+}
+
+exports.addUser = (username, password, callback) => {
+	auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
+		callback(null, user)
 	}).catch(err => {
 		callback(err)
 	})
