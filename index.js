@@ -19,21 +19,21 @@ const port = process.env.PORT || defaultPort
 //*@returns {string} response message
 // */
 //function respond(res, next, status, data, http_code) {
-//	const response = {
-//		'status': status
+//    const response = {
+//        'status': status
 //        , 'data': data
-//	}
+//    }
 //
-//	res.setHeader('content-type', 'application/json')
-//	res.writeHead(http_code)
-//	res.end(JSON.stringify(response))
-//	return next()
+//    res.setHeader('content-type', 'application/json')
+//    res.writeHead(http_code)
+//    res.end(JSON.stringify(response))
+//    return next()
 //}
 //exports.success = function success(res, next, data) {
-//	respond(res, next, 'success', data, index.status.ok)
+//    respond(res, next, 'success', data, index.status.ok)
 //}
 //exports.failure = function failure(res, next, data, http_code) {
-//	respond(res, next, 'failure', data, http_code)
+//    respond(res, next, 'failure', data, http_code)
 //}
 
 //---------------------------------------------------------------------
@@ -43,8 +43,8 @@ server.use(restify.acceptParser(server.acceptable))
 server.use(restify.authorizationParser())
 //---------------------------------------------------------------------
 server.get('/', restify.serveStatic({
-	'directory': './client',
-	'default': 'index.html'
+    'directory': './apidoc',
+    'default': 'index.html'
 }))
 
 /**
@@ -152,7 +152,7 @@ server.del('/user', handler.deleteUser)//reg
 *@apiName PUT user
 *@apiGroup Registered User
 *@apiDescription Updates user details
-*@apiSuccessExample {JSON} Success-Response: 
+*@apiSuccessExample {JSON} Success-Response:
 *HTTP/1.1 200 OK
 *{
 *  "_id": "584f416f88a0f83ac8aeb4bc",
@@ -160,7 +160,7 @@ server.del('/user', handler.deleteUser)//reg
 *  "password": "football", <----- New Password
 *  "__v": 0
 *}
-*@apiErrorExample {json} Error-Response: 
+*@apiErrorExample {json} Error-Response:
 *HTTP/1.1 400 Bad Request
 *{
 *  "message": "Username/password missing"
