@@ -12,10 +12,6 @@ server.use(restify.bodyParser())
 server.use(restify.acceptParser(server.acceptable))
 server.use(restify.authorizationParser())
 //---------------------------------------------------------------------
-server.get('/', restify.serveStatic({
-	'directory': './apidoc',
-	'default': 'index.html'
-}))
 
 /**
 *@api {GET} /api [Searches Flickr/Apixu for photo/weather]
@@ -196,6 +192,7 @@ server.post('/fav', handler.addFavPhoto)//reg
 */
 server.del('/fav', handler.deleteFavPhotos)//reg
 //---------------------------------------------------------------------
+server.get('/.*', restify.serveStatic({'directory': 'apidoc', 'default': 'index.html'}))
 
 server.listen(port, err => console.log(err || `Server running at: http://localhost:${port}`))
 
