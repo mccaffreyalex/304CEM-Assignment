@@ -14,10 +14,10 @@ const bcrypt = require('bcryptjs')
 const log_rounds = 10
 
 exports.hashPassword = (password) => new Promise((resolve, reject) => {
-    if (password === undefined) reject(new Error('Missing password'))
-    const salt = bcrypt.genSaltSync(log_rounds)
+	if (password === undefined) reject(new Error('Missing password'))
+	const salt = bcrypt.genSaltSync(log_rounds)
 
-    password = bcrypt.hashSync(password, salt)
-    resolve(password)
+	password = bcrypt.hashSync(password, salt)
+	resolve(password)
 })
 

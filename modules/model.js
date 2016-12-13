@@ -17,17 +17,17 @@ const auth = require('./authorize')
 * @returns {string} combinedData
 */
 exports.searchByTag = (request, callback) => {
-    api.extractParam(request, 't').then(tag => api.searchByTag(tag)).then(searchResults => {
-        this.results = searchResults
-        return api.searchByID(searchResults.photo_id)
-    }).then(data => {
-        this.data = data
-        return api.searchWeather(request.params.t, data.dateTaken)
-    }).then(weather => api.combinedData(this.results, this.data, weather)).then(data => {
-        callback(null, data)
-    }).catch(err => {
-        callback(err)
-    })
+	api.extractParam(request, 't').then(tag => api.searchByTag(tag)).then(searchResults => {
+		this.results = searchResults
+		return api.searchByID(searchResults.photo_id)
+	}).then(data => {
+		this.data = data
+		return api.searchWeather(request.params.t, data.dateTaken)
+	}).then(weather => api.combinedData(this.results, this.data, weather)).then(data => {
+		callback(null, data)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -40,11 +40,11 @@ exports.searchByTag = (request, callback) => {
 * @returns {string} user added to users collection
 */
 exports.addUser = (username, password, callback) => {
-    auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -56,11 +56,11 @@ exports.addUser = (username, password, callback) => {
 * @returns {string} username/password
 */
 exports.getUser = (username, password, callback) => {
-    persistence.getUser(username, password).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.getUser(username, password).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -71,11 +71,11 @@ exports.getUser = (username, password, callback) => {
 * @returns {string} updated username/password
 */
 exports.updateUser = (username, password, callback) => {
-    persistence.updateUser(username, password).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.updateUser(username, password).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -85,11 +85,11 @@ exports.updateUser = (username, password, callback) => {
 * @returns {string} user deleted
 */
 exports.deleteUser = (username, callback) => {
-    persistence.deleteUser(username).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.deleteUser(username).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -101,11 +101,11 @@ exports.deleteUser = (username, callback) => {
 * @returns {string} new entry in photos collection
 */
 exports.addFavPhoto = (username, photoID, location, callback) => {
-    persistence.addFavPhoto(username, photoID, location).then(photo => {
-        callback(null, photo)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.addFavPhoto(username, photoID, location).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -115,11 +115,11 @@ exports.addFavPhoto = (username, photoID, location, callback) => {
 * @returns {string} photos listed for that username
 */
 exports.getFavPhotos = (username, callback) => {
-    persistence.getFavPhotos(username).then(photo => {
-        callback(null, photo)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.getFavPhotos(username).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 /**
@@ -131,17 +131,17 @@ exports.getFavPhotos = (username, callback) => {
 * @returns {string} photo deleted
 */
 exports.deleteFavPhotos = (username, photoID, callback) => {
-    persistence.deleteFavPhotos(username, photoID).then(photo => {
-        callback(null, photo)
-    }).catch(err => {
-        callback(err)
-    })
+	persistence.deleteFavPhotos(username, photoID).then(photo => {
+		callback(null, photo)
+	}).catch(err => {
+		callback(err)
+	})
 }
 
 exports.addUser = (username, password, callback) => {
-    auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
-        callback(null, user)
-    }).catch(err => {
-        callback(err)
-    })
+	auth.hashPassword(password).then(hashPass => persistence.addUser(username, hashPass)).then(user => {
+		callback(null, user)
+	}).catch(err => {
+		callback(err)
+	})
 }

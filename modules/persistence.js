@@ -15,15 +15,15 @@ const schema = require('../schema/schema')
 */
 
 exports.addUser = (username, password) => new Promise((resolve, reject) => {
-    if (username === undefined) reject(new Error('Username missing'))
-    const userSchema = new schema.userModel({
-        username: username
+	if (username === undefined) reject(new Error('Username missing'))
+	const userSchema = new schema.userModel({
+		username: username
         , password: password
-    })
+	})
 
-    userSchema.save(function(err, user) {
-        err ? reject(new Error('User not saved' + err)) : resolve(user)
-    })
+	userSchema.save(function(err, user) {
+		err ? reject(new Error('User not saved' + err)) : resolve(user)
+	})
 })
 
 /**
@@ -36,14 +36,14 @@ exports.addUser = (username, password) => new Promise((resolve, reject) => {
 */
 
 exports.getUser = username => new Promise((resolve, reject) => {
-    if (username === undefined) reject(new Error('Username missing'))
-    schema.userModel.find({
-        username: username
-    }, function (err, user) {
-        err ? reject(new Error({
-            message: 'Incorrect password/user does not exist'
-        })) : resolve(user)
-    })
+	if (username === undefined) reject(new Error('Username missing'))
+	schema.userModel.find({
+		username: username
+	}, function(err, user) {
+		err ? reject(new Error({
+			message: 'Incorrect password/user does not exist'
+		})) : resolve(user)
+	})
 })
 
 /**
@@ -57,17 +57,17 @@ exports.getUser = username => new Promise((resolve, reject) => {
 */
 
 exports.updateUser = (username, password) => new Promise((resolve, reject) => {
-    if (username === undefined || password === undefined) reject(new Error('Username/password missing'))
-    schema.userModel.findOneAndUpdate({
-        username: username
-    }, {
-        password: password
-    }, {
-        new: true
-    }, function(err, user) {
-        !user ? reject(new Error('User does not exist')) : resolve(user)
-        err ? reject(new Error('Error updating user' + err)) : resolve(user)
-    })
+	if (username === undefined || password === undefined) reject(new Error('Username/password missing'))
+	schema.userModel.findOneAndUpdate({
+		username: username
+	}, {
+		password: password
+	}, {
+		new: true
+	}, function(err, user) {
+		!user ? reject(new Error('User does not exist')) : resolve(user)
+		err ? reject(new Error('Error updating user' + err)) : resolve(user)
+	})
 })
 
 /**
@@ -79,16 +79,16 @@ exports.updateUser = (username, password) => new Promise((resolve, reject) => {
 */
 
 exports.deleteUser = username => new Promise((resolve, reject) => {
-    if (username === undefined) reject(new Error('Username missing'))
-    else {
-        schema.userModel.findOneAndRemove({
-            username: username
-        }, function (err) {
-            err ? reject(new Error('Error deleting user' + err)) : resolve({
-                message: 'Successfully deleted'
-            })
-        })
-    }
+	if (username === undefined) reject(new Error('Username missing'))
+	else {
+		schema.userModel.findOneAndRemove({
+			username: username
+		}, function(err) {
+			err ? reject(new Error('Error deleting user' + err)) : resolve({
+				message: 'Successfully deleted'
+			})
+		})
+	}
 })
 
 /**
@@ -96,22 +96,23 @@ exports.deleteUser = username => new Promise((resolve, reject) => {
 * @param {string} username - username for photo to be added against
 * @param {string} photoID - ID of photo to be added to collection
 * @param {string} location - location of photo
-* @returns new photoModel schema including username, photoID, location
+* @returns {string} new photoModel schema including username, photoID, location
 * @throws Will throw error if username/password is missing from POST request
 * @throws Will throw error if error adding photo
 */
 exports.addFavPhoto = (username, photoID, location) => new Promise((resolve, reject) => {
-    if (username === undefined || photoID === undefined || location === undefined) reject(new Error('Username/photoID/location missing'))
-    else {
-        const photoSchema = new schema.photoModel({
-            username: username
+	if (username === undefined || photoID === undefined || location === undefined) reject(new Error('Username/photoID/location missing'))
+	else {
+		const photoSchema = new schema.photoModel({
+			username: username
             , photoID: photoID
             , location: location
-        })
-        photoSchema.save(function (err, photo) {
-            err ? reject(new Error('Error adding photo' + err)) : resolve(photo)
-        })
-    }
+		})
+
+		photoSchema.save(function(err, photo) {
+			err ? reject(new Error('Error adding photo' + err)) : resolve(photo)
+		})
+	}
 })
 
 /**
@@ -123,12 +124,12 @@ exports.addFavPhoto = (username, photoID, location) => new Promise((resolve, rej
 */
 
 exports.getFavPhotos = username => new Promise((resolve, reject) => {
-    if (username === undefined) reject(new Error('Username missing'))
-    schema.photoModel.find({
-        username: username
-    }, function(err, favourites) {
-        err ? reject(new Error('Error showing photos' + err)) : resolve(favourites)
-    })
+	if (username === undefined) reject(new Error('Username missing'))
+	schema.photoModel.find({
+		username: username
+	}, function(err, favourites) {
+		err ? reject(new Error('Error showing photos' + err)) : resolve(favourites)
+	})
 })
 
 /**
@@ -136,21 +137,21 @@ exports.getFavPhotos = username => new Promise((resolve, reject) => {
 * @params {string} username - username for photo to be deleted against
 * @params {string} photoID - ID of photo to be deleted
 * @returns photoID record deleted from photos collection
-* @retuns message 'Successfully deleted'
+* @returns message 'Successfully deleted'
 * @throws Will throw error if username/photoID missing from DELETE request
 * @throws Will throw error if error deleting photos
 * @throws Will throw error if error deleting photos
 */
 
 exports.deleteFavPhotos = (username, photoID) => new Promise((resolve, reject) => {
-    if (username === undefined || photoID === undefined) reject(new Error('Username/photoID missing'))
-    schema.photoModel.findOneAndRemove({
-        username: username
+	if (username === undefined || photoID === undefined) reject(new Error('Username/photoID missing'))
+	schema.photoModel.findOneAndRemove({
+		username: username
         , photoID: photoID
-    }, function(err, photo) {
-        console.log(photo)
-        err ? reject(new Error('Error deleting photos' + err)) : resolve({
-            message: 'Successfully deleted'
-        })
-    })
+	}, function(err, photo) {
+		console.log(photo)
+		err ? reject(new Error('Error deleting photos' + err)) : resolve({
+			message: 'Successfully deleted'
+		})
+	})
 })

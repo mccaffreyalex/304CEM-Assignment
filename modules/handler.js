@@ -1,7 +1,7 @@
 'use strict'
 const model = require('./model')
 const status = {
-    ok: 200
+	ok: 200
     , added: 201
     , badRequest: 400
 }
@@ -20,12 +20,12 @@ const status = {
  */
 
 exports.search = (req, res) => {
-    res.setHeader('content-type', 'application/json')
-    res.setHeader('accepts', 'GET')
-    model.searchByTag(req, (err, data) => {
-        err ? res.send(status.badRequest, err) : res.send(status.ok, data)
-        res.end()
-    })
+	res.setHeader('content-type', 'application/json')
+	res.setHeader('accepts', 'GET')
+	model.searchByTag(req, (err, data) => {
+		err ? res.send(status.badRequest, err) : res.send(status.ok, data)
+		res.end()
+	})
 }
 /**
  * Adds user to users collection
@@ -36,12 +36,12 @@ exports.search = (req, res) => {
  * @returns {string} user added to users collection
  */
 exports.addUser = (req, res) => {
-    res.setHeader('content-type', 'application/json')
-    res.setHeader('accepts', 'POST')
-    model.addUser(req.body.username, req.body.password, (err, user) => {
-        err ? res.send(status.badRequest, err) : res.send(status.added, user)
-        res.end()
-    })
+	res.setHeader('content-type', 'application/json')
+	res.setHeader('accepts', 'POST')
+	model.addUser(req.body.username, req.body.password, (err, user) => {
+		err ? res.send(status.badRequest, err) : res.send(status.added, user)
+		res.end()
+	})
 }
 /**
  * Shows user details
@@ -52,12 +52,12 @@ exports.addUser = (req, res) => {
  * @returns {string} user details
  */
 exports.getUser = (req, res) => {
-    res.setHeader('content-type', 'application/json')
-    res.setHeader('accepts', 'GET')
-    model.getUser(req.authorization.basic.username, req.authorization.basic.password, (err, user) => {
-        err ? res.send(status.badRequest, err) : res.send(status.ok, user)
-        res.end()
-    })
+	res.setHeader('content-type', 'application/json')
+	res.setHeader('accepts', 'GET')
+	model.getUser(req.authorization.basic.username, req.authorization.basic.password, (err, user) => {
+		err ? res.send(status.badRequest, err) : res.send(status.ok, user)
+		res.end()
+	})
 }
 
 /**
@@ -69,12 +69,12 @@ exports.getUser = (req, res) => {
  * @returns {string} updated user
  */
 exports.updateUser = (req, res) => {
-    res.setHeader('content-type', 'application/json')
-    res.setHeader('accepts', 'PUT')
-    model.updateUser(req.authorization.basic.username, req.body.password, (err, user) => {
-        err ? res.send(status.badRequest, err) : res.send(user)
-        res.end()
-    })
+	res.setHeader('content-type', 'application/json')
+	res.setHeader('accepts', 'PUT')
+	model.updateUser(req.authorization.basic.username, req.body.password, (err, user) => {
+		err ? res.send(status.badRequest, err) : res.send(user)
+		res.end()
+	})
 }
 
 /**
@@ -85,12 +85,12 @@ exports.updateUser = (req, res) => {
 * @returns {array} deleted user
 */
 exports.deleteUser = (req, res) => {
-    res.setHeader('content-type', 'application/json')
-    res.setHeader('accepts', 'DELETE')
-    model.deleteUser(req.authorization.basic.username, (err, message) => {
-        err ? res.send(status.badRequest, err) : res.send(status.ok, message)
-        res.end()
-    })
+	res.setHeader('content-type', 'application/json')
+	res.setHeader('accepts', 'DELETE')
+	model.deleteUser(req.authorization.basic.username, (err, message) => {
+		err ? res.send(status.badRequest, err) : res.send(status.ok, message)
+		res.end()
+	})
 }
 
 /**
@@ -102,12 +102,12 @@ exports.deleteUser = (req, res) => {
  * @returns {string} shows photos listed in photos collection
  */
 exports.getFavPhotos = (req, res) => {
-    res.setHeader('content-type', 'application/json')
-    res.setHeader('accepts', 'GET')
-    model.getFavPhotos(req.authorization.basic.username, (err, photos) => {
-        err ? res.send(status.badRequest, err) : res.send(status.ok, photos)
-        res.end()
-    })
+	res.setHeader('content-type', 'application/json')
+	res.setHeader('accepts', 'GET')
+	model.getFavPhotos(req.authorization.basic.username, (err, photos) => {
+		err ? res.send(status.badRequest, err) : res.send(status.ok, photos)
+		res.end()
+	})
 }
 
 /**
@@ -119,12 +119,12 @@ exports.getFavPhotos = (req, res) => {
  * @returns {string} photo added to photos collection
  */
 exports.addFavPhoto = (req, res) => {
-    res.setHeader('content-type', 'application/json')
-    res.setHeader('accepts', 'POST')
-    model.addFavPhoto(req.authorization.basic.username, req.body.photoID, req.body.location, (err, data) => {
-        err ? res.send(status.badRequest, err) : res.send(status.added, data)
-        res.end()
-    })
+	res.setHeader('content-type', 'application/json')
+	res.setHeader('accepts', 'POST')
+	model.addFavPhoto(req.authorization.basic.username, req.body.photoID, req.body.location, (err, data) => {
+		err ? res.send(status.badRequest, err) : res.send(status.added, data)
+		res.end()
+	})
 }
 
 /**
@@ -137,10 +137,10 @@ exports.addFavPhoto = (req, res) => {
  * @returns {string} photo removed from users collection
  */
 exports.deleteFavPhotos = (req, res) => {
-    res.setHeader('content-type', 'application/json')
-    res.setHeader('accepts', 'DELETE')
-    model.deleteFavPhotos(req.authorization.basic.username, req.body.photoID, (err, data) => {
-        err ? res.send(err) : res.send(data)
-        res.end()
-    })
+	res.setHeader('content-type', 'application/json')
+	res.setHeader('accepts', 'DELETE')
+	model.deleteFavPhotos(req.authorization.basic.username, req.body.photoID, (err, data) => {
+		err ? res.send(err) : res.send(data)
+		res.end()
+	})
 }
