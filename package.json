@@ -1,6 +1,10 @@
 {
     "name": "304cem-assignment"
     , "description": "304CEM Web API Development Assignment"
+    , "apidoc": {
+        "title": "Flickr Apixu API"
+        , "url": "https://flickr-weather-api.herokuapp.com"
+    }
     , "main": "index.js"
     , "scripts": {
         "start": "node index.js"
