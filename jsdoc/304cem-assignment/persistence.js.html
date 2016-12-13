@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: persistence.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: persistence.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict'
+const schema = require('../schema/schema')
+
+/**
+*@module Persistence Module
+*/
+
+/**
+* POSTing user to users collection
+* @function
+* @param {string} username - username to be added
+* @param {string} password - password to be added
+* @returns - user added to users collection
+* @throws Will throw error if user not saved, username/password missing
+*/
+
+exports.addUser = (username, password) => new Promise((resolve, reject) => {
+	if (username === undefined) reject(new Error('Username missing'))
+	const userSchema = new schema.userModel({
+		username: username
+        , password: password
+	})
+
+	userSchema.save(function(err, user) {
+		err ? reject(new Error('User not saved' + err)) : resolve(user)
+	})
+})
+
+/**
+* GET user from users collection
+* @function
+* @param {string} username - username to be GET
+* @returns username/password from collection
+* @throws Will throw error if username missing
+* @throws Will throw error if incorrect password/user does not exist
+*/
+
+exports.getUser = username => new Promise((resolve, reject) => {
+	if (username === undefined) reject(new Error('Username missing'))
+	schema.userModel.find({
+		username: username
+	}, function(err, user) {
+		err ? reject(new Error({
+			message: 'Incorrect password/user does not exist'
+		})) : resolve(user)
+	})
+})
+
+/**
+* PUT user updates password
+* @param {string} username - username to be updated
+* @param {string} password - password to be updated
+* @returns confirmation user is updated
+* @throws Will throw error if username/password is missing from PUT request
+* @throws Will throw error if user does not exist in collection
+* @throws Will throw error if user is not updated
+*/
+
+exports.updateUser = (username, password) => new Promise((resolve, reject) => {
+	if (username === undefined || password === undefined) reject(new Error('Username/password missing'))
+	schema.userModel.findOneAndUpdate({
+		username: username
+	}, {
+		password: password
+	}, {
+		new: true
+	}, function(err, user) {
+		!user ? reject(new Error('User does not exist')) : resolve(user)
+		err ? reject(new Error('Error updating user' + err)) : resolve(user)
+	})
+})
+
+/**
+* DELETE user from users collection
+* @param {string} username - username to be deleted
+* @returns confirmation message 'Successfully deleted'
+* @throws Will throw error if username/password is missing from DELETE request
+* @throws Will throw error if error deleting user
+*/
+
+exports.deleteUser = username => new Promise((resolve, reject) => {
+	if (username === undefined) reject(new Error('Username missing'))
+	else {
+		schema.userModel.findOneAndRemove({
+			username: username
+		}, function(err) {
+			err ? reject(new Error('Error deleting user' + err)) : resolve({
+				message: 'Successfully deleted'
+			})
+		})
+	}
+})
+
+/**
+* POST photo to photos collection
+* @param {string} username - username for photo to be added against
+* @param {string} photoID - ID of photo to be added to collection
+* @param {string} location - location of photo
+* @returns {string} new photoModel schema including username, photoID, location
+* @throws Will throw error if username/password is missing from POST request
+* @throws Will throw error if error adding photo
+*/
+exports.addFavPhoto = (username, photoID, location) => new Promise((resolve, reject) => {
+	if (username === undefined || photoID === undefined || location === undefined) reject(new Error('Username/photoID/location missing'))
+	else {
+		const photoSchema = new schema.photoModel({
+			username: username
+            , photoID: photoID
+            , location: location
+		})
+
+		photoSchema.save(function(err, photo) {
+			err ? reject(new Error('Error adding photo' + err)) : resolve(photo)
+		})
+	}
+})
+
+/**
+* GET list of photos based off username entered
+* @params {string} username - username for which favourite photos are going to be searched
+* @returns list of photos in photos collection with username attached
+* @throws Will throw error if username missing from GET request
+* @throws Will throw error if error showing photos
+*/
+
+exports.getFavPhotos = username => new Promise((resolve, reject) => {
+	if (username === undefined) reject(new Error('Username missing'))
+	schema.photoModel.find({
+		username: username
+	}, function(err, favourites) {
+		err ? reject(new Error('Error showing photos' + err)) : resolve(favourites)
+	})
+})
+
+/**
+* DELETE photo from photos collection based off username, photoID
+* @params {string} username - username for photo to be deleted against
+* @params {string} photoID - ID of photo to be deleted
+* @returns photoID record deleted from photos collection
+* @returns message 'Successfully deleted'
+* @throws Will throw error if username/photoID missing from DELETE request
+* @throws Will throw error if error deleting photos
+* @throws Will throw error if error deleting photos
+*/
+
+exports.deleteFavPhotos = (username, photoID) => new Promise((resolve, reject) => {
+	if (username === undefined || photoID === undefined) reject(new Error('Username/photoID missing'))
+	schema.photoModel.findOneAndRemove({
+		username: username
+        , photoID: photoID
+	}, function(err, photo) {
+		console.log(photo)
+		err ? reject(new Error('Error deleting photos' + err)) : resolve({
+			message: 'Successfully deleted'
+		})
+	})
+})
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Authorize%2520Module.html">Authorize Module</a></li><li><a href="module-Data-API%2520Module.html">Data-API Module</a></li><li><a href="module-Flickr%2520Module.html">Flickr Module</a></li><li><a href="module-Handler%2520Module.html">Handler Module</a></li><li><a href="module-Model%2520Module.html">Model Module</a></li><li><a href="module-Persistence%2520Module.html">Persistence Module</a></li><li><a href="module-Weather%2520Module.html">Weather Module</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Dec 13 2016 13:10:02 GMT+0000 (GMT Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
